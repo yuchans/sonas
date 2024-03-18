@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <title>소나무 수형잡기 | 재배 시뮬레이션 스마트팜</title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=1445, initial-scale=1.0" />
+        <link rel="apple-touch-icon" href="icon.png" />
+        <!-- Place favicon.ico in the root directory -->
+        <link rel="stylesheet" href="/css/vendor/normalize.css" />
+        <link rel="stylesheet" href="/css/vendor/font-awesome/css/font-awesome.min.css" />
+        <script src="/js/vendor/jquery-1.12.0.min.js"></script>
+        <script src="/js/vendor/t.min.js"></script>
+        <link rel="stylesheet" href="/css/week_1_style.css" />
+        <link rel="stylesheet" href="/css/vendor/jquery-ui.all.css" />
+        <style>
+            .miss-1-1__tipTxt {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+            .miss-1-1__tipTxt h3 {
+                font-size: 22px;
+                line-height: 36px;
+                font-weight: bold;
+                font-family: jalnan;
+            }
+
+            .miss-1-1__tipTxt p {
+                font-size: 22px;
+                line-height: 36px;
+            }
+
+            .Wrap_13 {
+                margin-top: 70px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 46px;
+            }
+
+            .Wrap_13 > section {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <article role="main" class="stage week-1 miss-1-1">
+            <div class="stage__bg"></div>
+            <div class="stage__top">
+                <h1 class="stage__tit">소나무 병해 방제</h1>
+                <a href="/html/ctvtsmlt/lobby.html" class="stage__exit">나가기</a>
+            </div>
+            <input type="checkbox" id="chkFx" checked="checked" />
+            <div class="tip">
+                <button type="button" class="tipBtn">선생님팁</button>
+                <div class="tip__star">
+                    <div class="iconStar"></div>
+                    <small class="iconStar"></small>
+                    <div class="tip__line">
+                        <img src="/images/miss/bg_tip_line.png" alt="" class="tip__lineImg" />
+                    </div>
+                </div>
+            </div>
+            <div class="stage__count">
+                <p class="stage__countTit">미션 도전횟수</p>
+                <p class="stage__countNum">0</p>
+            </div>
+
+            <!--미션1-1-->
+            <section class="stage__content mission_01_01 -active">
+                <h2 class="miss__tit">소나무 잎녹병 방제</h2>
+                <p class="miss__txt">
+                    소나무 잎녹병의 방제를 위해서는 소나무 주위의 중간기주를 없애야 하는데요,<br />
+                    소나무 주위에 어떤 중간기주들이 있는지 클릭하여 확인 해 보세요
+                </p>
+
+                <div class="Wrap_13">
+                    <section style="position: relative">
+                        <button id="13_btn_1" type="button" onclick="imgChange(this)">
+                            <img src="/images/miss/13_btn_1.png" alt="" />
+                        </button>
+                        <button id="13_btn_2" type="button" onclick="imgChange(this)">
+                            <img src="/images/miss/13_btn_2.png" alt="" />
+                        </button>
+
+                        <div
+                            id="btn_1_img"
+                            style="
+                                width: 200px;
+                                height: 200px;
+                                border: 6px solid rgb(0, 0, 0);
+                                border-radius: 30px;
+                                overflow: hidden;
+                                position: absolute;
+                                left: -70px;
+                                top: -183px;
+                                z-index: 10;
+                                display: none;
+                            "
+                        >
+                            <img src="/images/miss/13_img_1.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover" />
+                        </div>
+
+                        <div
+                            id="btn_2_img"
+                            style="
+                                width: 200px;
+                                height: 200px;
+                                border: 6px solid #000;
+                                border-radius: 30px;
+                                overflow: hidden;
+                                position: absolute;
+                                left: -70px;
+                                top: 160px;
+                                z-index: 10;
+                                display: none;
+                            "
+                        >
+                            <img src="/images/miss/13_img_2.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover" />
+                        </div>
+                    </section>
+                    <div style="width: 360px; height: 360px; border: 6px solid #000; border-radius: 30px; overflow: hidden; flex: none">
+                        <img id="13Img" src="/images/miss/13_img_0.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover" />
+                    </div>
+                    <section>
+                        <button id="13_btn_3" type="button" onclick="imgChange(this)">
+                            <img src="/images/miss/13_btn_3.png" alt="" />
+                        </button>
+                        <button id="13_btn_4" type="button" onclick="imgChange(this)">
+                            <img src="/images/miss/13_btn_4.png" alt="" />
+                        </button>
+                        <button id="13_btn_5" type="button" onclick="imgChange(this)">
+                            <img src="/images/miss/13_btn_5.png" alt="" />
+                        </button>
+
+                        <div
+                            id="btn_3_img"
+                            style="
+                                width: 200px;
+                                height: 200px;
+                                border: 6px solid #000;
+                                border-radius: 30px;
+                                overflow: hidden;
+                                position: absolute;
+                                right: 120px;
+                                top: 160px;
+                                z-index: 10;
+                                display: none;
+                            "
+                        >
+                            <img src="/images/miss/13_img_3.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover" />
+                        </div>
+
+                        <div
+                            id="btn_4_img"
+                            style="
+                                width: 200px;
+                                height: 200px;
+                                border: 6px solid rgb(0, 0, 0);
+                                border-radius: 30px;
+                                overflow: hidden;
+                                position: absolute;
+                                right: 120px;
+                                top: 355px;
+                                z-index: 10;
+                                display: none;
+                            "
+                        >
+                            <img src="/images/miss/13_img_4.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover" />
+                        </div>
+
+                        <div
+                            id="btn_5_img"
+                            style="
+                                width: 200px;
+                                height: 200px;
+                                border: 6px solid rgb(0, 0, 0);
+                                border-radius: 30px;
+                                overflow: hidden;
+                                position: absolute;
+                                right: 300px;
+                                top: 560px;
+                                z-index: 10;
+                                display: none;
+                            "
+                        >
+                            <img src="/images/miss/13_img_5.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover" />
+                        </div>
+                    </section>
+                </div>
+
+                <div class="btnGroup">
+                    <a href="#this" class="btn -complete" onclick="completeCheck()">완료</a>
+                </div>
+                <!--미션1-1 도움말 -->
+                <aside class="tipBox miss-1-1">
+                    <div class="tipBox__inner">
+                        <div class="tipBox__tec">
+                            <span class="tipBox__tecStar"></span>
+                            <span class="tipBox__starLine"></span>
+                        </div>
+                        <div class="tipBox__txtBox">
+                            <h2 class="tipBox__tit">선생님의 재배 tip</h2>
+                            <p class="miss-1-1__tipTxt" style="text-align: left; margin-top: 44px">
+                                소나무에 병이 발생하면 병든 잎을 발생 초기에 모두 모아<br />즉시 땅에 묻는 것이 중요합니다.<br />
+                                만약 묘포나 조경 수목에서 병이 몇 년간 계속해서 발생하면<br />주변에 중간기주가 있다는 뜻이므로,<br />
+                                중간기주들이 소나무 근처에 있는지를 면밀히 확인할 필요가 있습니다.
+                            </p>
+                            <p class="miss-1-1__tipTxt" style="text-align: left">
+                                중간기주가 확인되면
+                                <strong style="text-decoration: underline; color: #ee4344"
+                                    >나무 주변에 정기적으로 풀깎이를 하거나 중간기주가 되는<br />나무와 초본류를 제거하는 것이 잎녹병 방제의 첫 단계입니다.
+                                </strong>
+                            </p>
+                            <button type="button" class="tipBox__close">창닫기</button>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- 미션 성공 -->
+                <aside class="success miss-1-1">
+                    <div class="success__inner">
+                        <h2 class="success__tit"><img src="/images/miss/txt_complete.png" alt="미션성공" /></h2>
+                        <div class="success__box" style="width: 670px; margin: 34px auto">
+                            <img src="/images/miss/success_miss_1_13.png" alt="" style="width: 100%" />
+                        </div>
+
+                        <a href="/html/ctvtsmlt/lobby.html" class="btnMain" style="left: 42%"></a>
+                        <a href="/html/week01/mission_01_14.html" class="btnNext" style="left: 58%">
+                            <img src="/images/sprite/nextBtn.png" alt="" />
+                        </a>
+                    </div>
+                </aside>
+
+                <!-- 틀림답 -->
+                <aside onclick="missClose()" class="incorrect miss-1-1">
+                    <div class="incorrect__inner">
+                        <button type="button" class="incorrect__handBox">
+                            <span class="incorrect__handImg"></span>
+                            <p class="incorrect__txt">
+                                중간기주를 모두<br />
+                                확인 후 다시 시도해 주세요
+                            </p>
+                        </button>
+                    </div>
+                </aside>
+            </section>
+            <!-- //미션 1-1 -->
+        </article>
+    </body>
+    <script src="/js/vendor/jquery.ui.datapicker.min.js"></script>
+    <script src="/js/vendor/waypoints.min.js"></script>
+    <script src="/js/vendor/datepicker-ko.js"></script>
+    <script src="/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="/js/vendor/jquery.easing.1.3.js"></script>
+    <script src="/js/vendor/slick.min.js"></script>
+    <script src="/js/vendor/jquery.counterup.min.js"></script>
+    <script src="/js/ui.js"></script>
+
+    <script src="/js/vendor/jquery.confetti.js"></script>
+    <script src="/js/vendor/jquery-ui.js"></script>
+    <script src="/js/miss.min.js"></script>
+    <script src="/js/sound.min.js"></script>
+    <script>
+        var challengeCount = 0; // 도전횟수
+        document.addEventListener("DOMContentLoaded", function () {
+            loadingComplete();
+        });
+
+        let check1 = false;
+        let check2 = false;
+        let check3 = false;
+        let check4 = false;
+        let check5 = false;
+
+        const btn_1_img = document.getElementById("btn_1_img");
+        const btn_2_img = document.getElementById("btn_2_img");
+        const btn_3_img = document.getElementById("btn_3_img");
+        const btn_4_img = document.getElementById("btn_4_img");
+        const btn_5_img = document.getElementById("btn_5_img");
+
+        function imgChange(e) {
+            const img = document.getElementById("13Img");
+            if (e.id === "13_btn_1") {
+                check1 = true;
+                btn_1_img.style.display = "block";
+            } else if (e.id === "13_btn_2") {
+                check2 = true;
+                btn_2_img.style.display = "block";
+            } else if (e.id === "13_btn_3") {
+                check3 = true;
+                btn_3_img.style.display = "block";
+            } else if (e.id === "13_btn_4") {
+                check4 = true;
+                btn_4_img.style.display = "block";
+            } else if (e.id === "13_btn_5") {
+                check5 = true;
+                btn_5_img.style.display = "block";
+            }
+        }
+
+        const incorrect = document.querySelector(".incorrect");
+
+        function completeCheck() {
+            const stage__countNum = document.querySelector(".stage__countNum");
+            let nums = Number(stage__countNum.textContent);
+
+            if (check1 && check2 && check3 && check4 && check5) {
+                new Audio("/sound/sound_yea.mp3").play();
+                clear();
+            } else {
+                stage__countNum.textContent = ++nums;
+                new Audio("/sound/strawberry/01_Wrong.mp3").play();
+                incorrect.style.opacity = 1;
+                incorrect.style.visibility = "visible";
+                incorrect.style.transform = "scale(1)";
+            }
+        }
+
+        function missClose() {
+            incorrect.style.opacity = 0;
+            incorrect.style.visibility = "hidden";
+            incorrect.style.transform = "scale(0.0)";
+        }
+    </script>
+</html>

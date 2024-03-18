@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <title>| 재배 시뮬레이션 스마트팜</title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=1445, initial-scale=1.0" />
+        <link rel="apple-touch-icon" href="icon.png" />
+        <!-- Place favicon.ico in the root directory -->
+        <link rel="stylesheet" href="/css/vendor/normalize.css" />
+        <link rel="stylesheet" href="/css/vendor/font-awesome/css/font-awesome.min.css" />
+        <script src="/js/vendor/jquery-1.12.0.min.js"></script>
+        <script src="/js/vendor/t.min.js"></script>
+        <link rel="stylesheet" href="/css/week_1_style.css" />
+        <link rel="stylesheet" href="/css/vendor/jquery-ui.all.css" />
+    </head>
+    <body>
+        <!-- loading -->
+        <aside class="loading">
+            <div class="loading__icon -rain01 -hidden"></div>
+            <div class="loading__rain02 -hidden"></div>
+            <div class="loading__icon -tree"></div>
+            <h1 class="loading__tit">
+                <span>LOADING...</span>
+            </h1>
+        </aside>
+
+        <aside class="dataLoading">
+            <div class="dataLoading__inner">
+                <div class="dataLoading__img">
+                    <div class="dataLoading__sap"></div>
+                    <div class="dataLoading__bg"></div>
+                </div>
+                <p class="dataLoading__txt">잠시 기다려주세요...<br />데이터를 가저오고 있습니다.</p>
+            </div>
+        </aside>
+
+        <!-- //loading -->
+        <iframe src="/html/ctvtsmlt/lobby.html" frameborder="0" id="iframe"></iframe>
+        <input type="checkbox" id="chkBgm" hidden checked="checked" />
+        <input type="checkbox" id="chkFx" hidden checked="checked" />
+    </body>
+    <script src="/js/vendor/jquery.ui.datapicker.min.js"></script>
+    <script src="/js/vendor/waypoints.min.js"></script>
+    <script src="/js/vendor/datepicker-ko.js"></script>
+    <script src="/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="/js/vendor/jquery.easing.1.3.js"></script>
+    <script src="/js/vendor/slick.min.js"></script>
+    <script src="/js/vendor/jquery.counterup.min.js"></script>
+    <script src="/js/ui.js"></script>
+
+    <script src="/js/miss.min.js"></script>
+    <script src="/js/sound.min.js"></script>
+    <script src="/js/vendor/detect-zoom.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var challengeCount = 0; //도전횟수
+            //시작될때 스크립트 이행
+            $(window).load(function () {
+                var timer = 500;
+                setTimeout(function () {
+                    //$(".loading").addClass("-complete");
+                    $(".loading__tit span").text("COMPLETE");
+                }, timer);
+                setTimeout(function () {
+                    $(".loading").addClass("-slideUp");
+                }, timer + 500);
+                //샘플
+                chkZoom();
+            });
+        });
+
+        var docV = document.documentElement;
+        function closeScreen() {
+            if (docV.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            }
+            console.log("!!");
+        }
+        $(window).resize(function () {
+            if (this.resizeTO) {
+                clearTimeout(this.resizeTO);
+            }
+            this.resizeTO = setTimeout(function () {
+                $(this).trigger("resizeEnd");
+            }, 500);
+        });
+        $(window).on("resizeEnd", function () {
+            window.resizeTo(1465, 850);
+        });
+    </script>
+</html>

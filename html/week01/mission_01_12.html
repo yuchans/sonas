@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <title>소나무 수형잡기 | 재배 시뮬레이션 스마트팜</title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=1445, initial-scale=1.0" />
+        <link rel="apple-touch-icon" href="icon.png" />
+        <!-- Place favicon.ico in the root directory -->
+        <link rel="stylesheet" href="/css/vendor/normalize.css" />
+        <link rel="stylesheet" href="/css/vendor/font-awesome/css/font-awesome.min.css" />
+        <script src="/js/vendor/jquery-1.12.0.min.js"></script>
+        <script src="/js/vendor/t.min.js"></script>
+        <link rel="stylesheet" href="/css/week_1_style.css" />
+        <link rel="stylesheet" href="/css/vendor/jquery-ui.all.css" />
+        <style>
+            .miss-1-1__tipTxt {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                text-align: left;
+            }
+            .miss-1-1__tipTxt h3 {
+                font-size: 22px;
+                line-height: 32px;
+                font-weight: bold;
+                font-family: jalnan;
+                margin-bottom: 4px;
+            }
+
+            .miss-1-1__tipTxt p {
+                font-size: 18px;
+                line-height: 26px;
+            }
+        </style>
+    </head>
+    <body>
+        <article role="main" class="stage week-1 miss-1-1">
+            <div class="stage__bg"></div>
+            <div class="stage__top">
+                <h1 class="stage__tit">소나무 재선충병 방제</h1>
+                <a href="/html/ctvtsmlt/lobby.html" class="stage__exit">나가기</a>
+            </div>
+            <input type="checkbox" id="chkFx" checked="checked" />
+            <div class="tip">
+                <button type="button" class="tipBtn">선생님팁</button>
+                <div class="tip__star">
+                    <div class="iconStar"></div>
+                    <small class="iconStar"></small>
+                    <div class="tip__line">
+                        <img src="/images/miss/bg_tip_line.png" alt="" class="tip__lineImg" />
+                    </div>
+                </div>
+            </div>
+            <div class="stage__count">
+                <p class="stage__countTit">미션 도전횟수</p>
+                <p class="stage__countNum">0</p>
+            </div>
+
+            <!--미션1-1-->
+            <section class="stage__content mission_01_01 -active">
+                <h2 class="miss__tit">유인항공 예찰 절차</h2>
+                <p class="miss__txt">
+                    소나무 재선충병 방제를 위한 유인항공예찰을 하기 위해서 총 5개의 절차를 진행해야 합니다.<br />
+                    아래 작업 이미지를 드래그하여 순서대로 배열해보세요~
+                </p>
+                <div class="mainVisual"></div>
+                <div class="handEvent">
+                    <div class="overImage -big" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <div class="overImage__num -num01" ondrop="drop(this)" ondragover="allowDrop(event)"></div>
+                        <div class="overImage__num -num02" ondrop="drop(this)" ondragover="allowDrop(event)"></div>
+                        <div class="overImage__num -num03" ondrop="drop(this)" ondragover="allowDrop(event)"></div>
+                        <div class="overImage__num -num04" ondrop="drop(this)" ondragover="allowDrop(event)"></div>
+                        <div class="overImage__num -num05" ondrop="drop(this)" ondragover="allowDrop(event)"></div>
+                    </div>
+                    <div class="overImage -small" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                </div>
+
+                <div class="btnGroup">
+                    <a href="#this" class="btn -reset" onclick="reset()">초기화</a>
+                    <a href="#this" class="btn -complete" onclick="completeCheck()">완료</a>
+                </div>
+                <!--미션1-1 도움말 -->
+                <aside class="tipBox miss-1-1">
+                    <div class="tipBox__inner">
+                        <div class="tipBox__tec">
+                            <span class="tipBox__tecStar"></span>
+                            <span class="tipBox__starLine"></span>
+                        </div>
+                        <div class="tipBox__txtBox">
+                            <h2 class="tipBox__tit">선생님의 재배 tip</h2>
+                            <ul class="miss-1-1__tipTxt" style="font-size: 22px; line-height: 36px">
+                                <li>
+                                    <h3>유인 항공 예찰 ① 계획수립</h3>
+                                    <p>지역선정 -> 노선도 작성 -> 탑승자 선정 (산림 기술사, 산림 엔지니어링, 기타 지역 전문가 등)</p>
+                                </li>
+                                <li>
+                                    <h3>유인 항공 예찰 ② 예찰 계획 제출</h3>
+                                    <p>예찰을 희망하는 기관은 수립한 계획을 산림청에 제출</p>
+                                </li>
+                                <li>
+                                    <h3>유인 항공 예찰 ③ 적절성 검토</h3>
+                                    <p>소나무재선충병모니터링센터는 제출된 노선도에 대한 적절성을 검토</p>
+                                    <p>예찰 우선 지역이 충분히 포함되어 있는지를 중점적으로 검토</p>
+                                </li>
+                                <li>
+                                    <h3>유인 항공 예찰 ④ 예찰 실행</h3>
+                                    <p>확정된 노선도에 따라 예찰 실행</p>
+                                </li>
+                                <li>
+                                    <h3>유인 항공 예찰 ⑤ 예찰 정보 취득</h3>
+                                    <p>예찰 경로와 피해 지역에 관한 정보 취득 (소나무재선충병 뷰어앱을 활용)</p>
+                                    <p>피해 지역 영상 취득</p>
+                                </li>
+                            </ul>
+                            <button type="button" class="tipBox__close">창닫기</button>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- 미션 성공 -->
+                <aside class="success miss-1-1">
+                    <div class="success__inner">
+                        <h2 class="success__tit"><img src="/images/miss/txt_complete.png" alt="미션성공" /></h2>
+                        <div class="success__box">
+                            <img src="/images/miss/week01/success_miss_1_11.png" alt="" />
+                        </div>
+
+                        <a href="/html/ctvtsmlt/lobby.html" class="btnMain" style="left: 42%"></a>
+                        <a href="/html/week01/mission_01_13.html" class="btnNext" style="left: 58%">
+                            <img src="/images/sprite/nextBtn.png" alt="" />
+                        </a>
+                    </div>
+                </aside>
+
+                <!-- 틀림답 -->
+                <aside onclick="missClose()" class="incorrect miss-1-1">
+                    <div class="incorrect__inner">
+                        <button type="button" class="incorrect__handBox">
+                            <span class="incorrect__handImg"></span>
+                            <p class="incorrect__txt">
+                                유인항공 예찰절차<br />
+                                순서가 올바르지 않습니다.<br />
+                                다시 시도해보세요.
+                            </p>
+                        </button>
+                    </div>
+                </aside>
+            </section>
+            <!-- //미션 1-1 -->
+        </article>
+    </body>
+    <script src="/js/vendor/jquery.ui.datapicker.min.js"></script>
+    <script src="/js/vendor/waypoints.min.js"></script>
+    <script src="/js/vendor/datepicker-ko.js"></script>
+    <script src="/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="/js/vendor/jquery.easing.1.3.js"></script>
+    <script src="/js/vendor/slick.min.js"></script>
+    <script src="/js/vendor/jquery.counterup.min.js"></script>
+    <script src="/js/ui.js"></script>
+
+    <script src="/js/vendor/jquery.confetti.js"></script>
+    <script src="/js/vendor/jquery-ui.js"></script>
+    <script src="/js/miss.min.js"></script>
+    <script src="/js/sound.min.js"></script>
+    <script>
+        const incorrect = document.querySelector(".incorrect");
+
+        document.addEventListener("DOMContentLoaded", function () {
+            loadingComplete();
+
+            // 미션7-3
+            (function () {
+                // 배열 섞기 함수
+                function shuffleArray(array) {
+                    var length = array.length;
+                    while (length) {
+                        var index = Math.floor(length-- * Math.random());
+                        var temp = array[length];
+                        array[length] = array[index];
+                        array[index] = temp;
+                    }
+                    return array;
+                }
+
+                // 초기 배열 선언 및 섞기
+                var array = [
+                    '<div class="overImage__item -type01" draggable="true" ondragstart="drag(event)" data-array="0"></div>',
+                    '<div class="overImage__item -type02" draggable="true" ondragstart="drag(event)" data-array="1"></div>',
+                    '<div class="overImage__item -type03" draggable="true" ondragstart="drag(event)" data-array="2"></div>',
+                    '<div class="overImage__item -type04" draggable="true" ondragstart="drag(event)" data-array="3"></div>',
+                    '<div class="overImage__item -type05" draggable="true" ondragstart="drag(event)" data-array="4"></div>',
+                ];
+                array = shuffleArray(array);
+
+                // 이미지 넣기 함수
+                function appendImages() {
+                    array.forEach(function (item) {
+                        document.querySelector(".-small").insertAdjacentHTML("beforeend", item);
+                    });
+                }
+
+                // 초기화 함수
+                function reset() {
+                    document.querySelectorAll(".-small div").forEach(function (el) {
+                        el.remove();
+                    });
+                    document.querySelectorAll(".-big .overImage__num div").forEach(function (el) {
+                        el.remove();
+                    });
+                    array = shuffleArray(array);
+                    appendImages();
+                }
+
+                // 완료 함수
+                function complete() {
+                    var chkArray;
+                    var chkResult = true;
+                    var tarElements = document.querySelectorAll("body .-big .overImage__num");
+                    tarElements.forEach(function ($tar, i) {
+                        chkArray = $tar.querySelector(".overImage__item").getAttribute("data-array");
+                        if (i != chkArray) {
+                            chkResult = false;
+                        }
+                    });
+
+                    if (chkResult) {
+                        clear();
+                    } else {
+                        challengeCount++;
+                        retry(challengeCount, count); // count 변수 전달
+                    }
+                }
+
+                // 다음 미션으로 이동 함수
+                function nextMission() {
+                    nextMission("mission_5_4.html");
+                }
+
+                // 드래그 이벤트
+                var dragTarget;
+                var dragParent;
+
+                window.allowDrop = function (ev) {
+                    ev = ev || window.event;
+                    ev.preventDefault();
+                };
+
+                window.drag = function (ev) {
+                    ev = ev || window.event;
+                    dragTarget = ev.target;
+                    dragParent = dragTarget.parentElement;
+                };
+
+                window.drop = function (ev) {
+                    ev = ev || window.event; // 추가된 부분
+                    allowDrop(ev);
+                    var dropTarget = ev.target;
+                    if (dropTarget.classList.contains("overImage__num")) {
+                        if (dropTarget.querySelectorAll(".overImage__item").length > 0) {
+                            dragParent.appendChild(dropTarget.querySelector(".overImage__item"));
+                        }
+                        dropTarget.appendChild(dragTarget);
+                    }
+                };
+
+                // 초기 이미지 추가
+                appendImages();
+
+                // 이벤트 리스너 등록
+                document.querySelectorAll(".overImage__num").forEach(function (num) {
+                    num.addEventListener("dragover", allowDrop);
+                    num.addEventListener("drop", drop);
+                });
+
+                function missClose() {
+                    incorrect.style.opacity = 0;
+                    incorrect.style.visibility = "hidden";
+                    incorrect.style.transform = "scale(0.0)";
+                }
+
+                window.reset = function () {
+                    document.querySelectorAll(".-small div").forEach(function (el) {
+                        el.remove();
+                    });
+                    document.querySelectorAll(".-big .overImage__num div").forEach(function (el) {
+                        el.remove();
+                    });
+                    array = shuffleArray(array);
+                    appendImages();
+                };
+
+                // 이벤트 리스너 등록
+                document.querySelectorAll(".overImage__num").forEach(function (num) {
+                    num.addEventListener("dragover", allowDrop);
+                    num.addEventListener("drop", drop);
+                });
+            })();
+        });
+
+        function completeCheck() {
+            var sortedArray = [3, 2, 4, 1, 0]; // 정렬된 순서
+            var isCorrectOrder = true;
+
+            document.querySelectorAll(".overImage__num").forEach(function (num, index) {
+                var itemArray = num.querySelector(".overImage__item").getAttribute("data-array");
+                if (itemArray != sortedArray[index]) {
+                    isCorrectOrder = false;
+                }
+            });
+
+            if (isCorrectOrder) {
+                new Audio("/sound/sound_yea.mp3").play();
+                clear();
+            } else {
+                new Audio("/sound/strawberry/01_Wrong.mp3").play();
+                incorrect.style.opacity = 1;
+                incorrect.style.visibility = "visible";
+                incorrect.style.transform = "scale(1)";
+
+                retry(challengeCount, count);
+            }
+        }
+
+        function missClose() {
+            incorrect.style.opacity = 0;
+            incorrect.style.visibility = "hidden";
+            incorrect.style.transform = "scale(0.0)";
+        }
+    </script>
+</html>

@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html
+    lang="ko"
+    class="sizes customelements history pointerevents postmessage webgl websockets cssanimations csscolumns csscolumns-width csscolumns-span csscolumns-fill csscolumns-gap csscolumns-rule csscolumns-rulecolor csscolumns-rulestyle csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-breakinside flexbox picture srcset webworkers Chrome"
+>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <title>스마트팜</title>
+        <meta name="description" content="" />
+        <link rel="apple-touch-icon" href="icon.png" />
+        <!-- Place favicon.ico in the root directory -->
+        <link rel="stylesheet" href="./css/vendor/normalize.css" />
+        <link rel="stylesheet" href="./css/vendor/font-awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="./css/vendor/jqueryUi.css" />
+        <link rel="stylesheet" href="./css/vendor/swiper-bundle.min.css" />
+        <!-- addCss -->
+        <link rel="stylesheet" href="./css/style.css" />
+        <link rel="stylesheet" href="../../css/_new_gate.css" />
+        <!-- addCss2 -->
+        <script src="js/vendor/jquery-1.12.0.min.js"></script>
+        <script src="js/vendor/swiper-bundle.min.js"></script>
+        <!-- addJs -->
+        <script src="plugins/jquery.appear.min.js"></script>
+        <!-- addJs2 -->
+        <script src="plugins/jquery.easypiechart.min.js"></script>
+        <!-- addJs3 -->
+        <script src="./js/bootstrap.min.js"></script>
+
+        <!-- Confirm-Alert Library -->
+        <link rel="stylesheet" href="./js/HPCF/H-confirm-alert.css" />
+        <script src="./js/HPCF/H-confirm-alert.js"></script>
+
+        <link rel="stylesheet" href="./css/vendor/fontawesome.5.15.4.css" />
+    </head>
+    <body>
+        <header class="mb-4 position-relative">
+            <nav class="navbar mx-4 py-4">
+                <div class="navbar-brand col">
+                    <a href="/se/main.do">
+                        <img src="./files/header_logo.png" alt="헤더  로고" />
+                    </a>
+                </div>
+
+                <div class="navbar-nav01 col-9">
+                    <a href="/se/ac/crseList.do" class="gnb__item">전체 과정</a>
+
+                    <a href="/se/myLrnng/progrsList.do" class="gnb__item">내 학습</a>
+
+                    <a href="/se/virtlprct/main.do" class="gnb__item">가상 실습</a>
+
+                    <a href="/se/ctvtsmlt/gate.do" class="gnb__item active">재배 튜토리얼</a>
+
+                    <a href="/se/prctnote/tmLine.do" class="gnb__item">데이터 학습</a>
+
+                    <a href="/se/cmmnty/noti/brdList.do" class="gnb__item">학습지원</a>
+                </div>
+
+                <div class="navbar-nav02 col p-0">
+                    <div class="noti-box-wrap">
+                        <a href="/se/ctvtsmlt/gate.do#" class="icon_bell" id="icon_bell"> </a>
+                        <div class="noti-box" style="display: none" id="noti-box">
+                            <div class="icon_tri"></div>
+                            <div class="border-bottom p-4">
+                                <p class="fz-20">읽지 않은 알림이 없습니다.</p>
+                            </div>
+
+                            <div class="p-4 text-center">
+                                <a href="/se/mypage/myinfo/ntcnList.do" class="list-more">알림 더보기</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-box-wrap">
+                        <a href="/se/ctvtsmlt/gate.do#" class="member_face" id="member_face">
+                            <img src="./files/user_none.png" alt="프로필없음사진" id="header_profile" />
+                        </a>
+                        <div class="profile-box p-4" style="display: none" id="profile-box">
+                            <div class="d-flex align-items-center">
+                                <div class="profile-img mr-3">
+                                    <img src="./files/user_none.png" alt="프로필없음사진" id="popupProfile" />
+                                </div>
+                                <div>
+                                    <p class="fz-14 mycolor1 mb-1">학생</p>
+                                    <p class="fz-20 font-weight-bold">나학생</p>
+                                </div>
+                            </div>
+                            <div class="my-3 pb-3 border-bottom">
+                                <p class="fz-20 pnp-txt" onclick="location.href='/se/myLrnng/progrsList.do'">수강중인 과정 <span class="mycolor4" id="crseCnt"></span>개</p>
+                            </div>
+                            <div class="list-link">
+                                <div>
+                                    <a href="/se/myLrnng/nextLrnng.do" id="nextLrnng">이어서 학습하기</a>
+                                </div>
+                                <div>
+                                    <a href="/se/mypage/qna.do">나의문의</a>
+                                </div>
+                                <div>
+                                    <a href="/se/mypage/myinfo/myinfoDetail.do">내 정보</a>
+                                </div>
+                                <div>
+                                    <a href="/se/login/logout.do">로그아웃</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    $("#member_face").click(function () {
+                        $("#profile-box").toggle();
+                    });
+
+                    $("#icon_bell").click(function () {
+                        $("#noti-box").toggle();
+                    });
+
+                    $(document).click(function (e) {
+                        var container1 = $("#noti-box, #icon_bell");
+                        if (!container1.is(e.target) && !container1.has(e.target).length) {
+                            $("#noti-box").hide();
+                        }
+
+                        var container2 = $("#profile-box, #member_face");
+                        if (!container2.is(e.target) && !container2.has(e.target).length) {
+                            $("#profile-box").hide();
+                        }
+                    });
+                </script>
+            </nav>
+        </header>
+
+        <div class="container">
+            <div class="location-wrap nav mb-5" id="navDiv">
+                <a href="#" class="font-weight-bold">HOME</a>
+                <a href="#" class="icon_location">가상실습</a>
+                <a href="#" class="icon_location">시설 원예 재배 튜토리얼</a>
+            </div>
+
+            <!-- HTML 시작-->
+            <div class="gate_wrap01">
+                <h3 class="tit">
+                    나학생님의 스마트 농장에
+                    <br />오신 것을 환영합니다.
+                </h3>
+                <div class="gRt">
+                    <button class="mBtn1 w115">더보기</button>
+                </div>
+                <div class="date">
+                    <ul>
+                        <li>
+                            <div class="ti">생산량(ton)</div>
+                            <div class="nu">123,000</div>
+                        </li>
+                        <li>
+                            <div class="ti">비용(만원)</div>
+                            <div class="nu">468,475,000</div>
+                        </li>
+                        <li>
+                            <div class="ti">매출액(만원)</div>
+                            <div class="nu">678,945,100</div>
+                        </li>
+                        <li>
+                            <div class="ti">수입(만원)</div>
+                            <div class="nu txtPrimary">3,123,000</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="swiper_wrap01">
+                <h3 class="title_wrap01">시설 원예 재배 튜토리얼</h3>
+                <!-- swiper -->
+                <div class="swiper jsSwiper01">
+                    <div class="swiper-wrapper">
+                        <!-- slide -->
+                        <div class="swiper-slide pruple">
+                            <!-- purple -->
+                            <div class="con">
+                                <div class="tit">
+                                    <div class="tx">재배 2년 작기 종료</div>
+                                    <div class="ti">
+                                        토마토 하우스
+                                        <br />2,000 <span class="s">평</span>
+                                    </div>
+                                    <div class="graph_wrap02">
+                                        <div class="chart" data-percent="50" data-bar-color="#472ba4"></div>
+                                        <span class="t"
+                                            ><span class="cell">2,000 <em class="s">/40,000</em></span></span
+                                        >
+                                    </div>
+                                </div>
+                                <!-- graph -->
+                                <div class="graph_wrap01">
+                                    <div class="graph"><span class="cur" style="width: 30%"></span></div>
+                                    <div class="label">
+                                        <span class="f">평</span>
+                                        <span class="b"></span>
+                                        <span class="b"></span>
+                                        <span class="b"></span>
+                                        <span class="b"></span>
+                                        <span class="b"></span>
+                                        <span class="b"></span>
+                                        <span class="b"></span>
+                                        <span class="b"></span>
+                                        <span class="b"></span>
+                                        <span class="l">40,000</span>
+                                    </div>
+                                </div>
+                                <!-- //graph -->
+                                <div class="txt">
+                                    <dl>
+                                        <dt>생산량</dt>
+                                        <dd>357,243 <br /><span class="s block">(55.2kg/평)</span></dd>
+                                        <dt>생산비</dt>
+                                        <dd>123,456,78 <span class="s">원</span></dd>
+                                    </dl>
+                                    <div class="im"><img src="images/_gate_img_tomato01.png" alt="토마토" /></div>
+                                </div>
+                                <div class="button">
+                                    <button>하우스 확장</button>
+                                    <button>작기 시작</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //slide -->
+                        <!-- slide -->
+                        <div class="swiper-slide pink">
+                            <!-- pink -->
+                            <div class="con">
+                                <div class="tit">
+                                    <div class="tx">재배 2년 작기 종료</div>
+                                    <div class="ti">
+                                        딸기 하우스
+                                        <br />2,000 <span class="s">평</span>
+                                    </div>
+                                    <div class="graph_wrap02">
+                                        <div class="chart" data-percent="70" data-bar-color="#ca412c"></div>
+                                        <span class="t"
+                                            ><span class="cell">2,000 <em class="s">/40,000</em></span></span
+                                        >
+                                    </div>
+                                </div>
+                                <!-- graph -->
+                                <div class="graph_wrap01">
+                                    <div class="graph"><span class="cur" style="width: 30%"></span></div>
+                                    <div class="label">
+                                        <span class="f">평</span>
+                                        <span class="b"></span>
+                                        <span class="b"></span>
+                                        <span class="b"></span>
+                                        <span class="b"></span>
+                                        <span class="b"></span>
+                                        <span class="b"></span>
+                                        <span class="b"></span>
+                                        <span class="b"></span>
+                                        <span class="b"></span>
+                                        <span class="l">40,000</span>
+                                    </div>
+                                </div>
+                                <!-- //graph -->
+                                <div class="txt">
+                                    <dl>
+                                        <dt>생산량</dt>
+                                        <dd>357,243 <br /><span class="s block">(55.2kg/평)</span></dd>
+                                        <dt>생산비</dt>
+                                        <dd>123,456,78 <span class="s">원</span></dd>
+                                    </dl>
+                                    <div class="im"><img src="images/_gate_img_berry01.png" alt="딸기" /></div>
+                                </div>
+                                <div class="button">
+                                    <div class="tx">
+                                        <span class="t">이번 미션</span>
+                                        [이식 후 관리] 적정 환경 만들기
+                                    </div>
+                                    <button>재배 시작</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //slide -->
+                        <!-- slide -->
+                        <div class="swiper-slide green">
+                            <!-- green -->
+                            <div class="con">
+                                <div class="tit">
+                                    <div class="tx">작기 전</div>
+                                    <div class="ti">
+                                        파프리카 하우스
+                                        <br />1,000
+                                    </div>
+                                    <div class="graph_wrap02">
+                                        <div class="chart" data-percent="30" data-bar-color="#4a7100"></div>
+                                        <span class="t"
+                                            ><span class="cell">2,000 <em class="s">/40,000</em></span></span
+                                        >
+                                    </div>
+                                </div>
+                                <!-- graph -->
+                                <div class="graph_wrap01">
+                                    <div class="graph"><span class="cur" style="width: 30%"></span></div>
+                                    <div class="label">
+                                        <span class="f">평</span>
+                                        <span class="b"></span>
+                                        <span class="b"></span>
+                                        <span class="b"></span>
+                                        <span class="b"></span>
+                                        <span class="b"></span>
+                                        <span class="b"></span>
+                                        <span class="b"></span>
+                                        <span class="b"></span>
+                                        <span class="b"></span>
+                                        <span class="l">40,000</span>
+                                    </div>
+                                </div>
+                                <!-- //graph -->
+                                <div class="txt">
+                                    <dl>
+                                        <dt class="type2">재배를 <br />시작하세요</dt>
+                                    </dl>
+                                    <div class="im"><img src="images/_gate_img_paprika01.png" alt="파프리카" /></div>
+                                </div>
+                                <div class="button">
+                                    <button>재배 시작</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //slide -->
+                        <!-- slide -->
+                        <div class="swiper-slide nodata">
+                            <p><span>표시할 작물이 없습니다.</span></p>
+                        </div>
+                        <!-- //slide -->
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                <!-- //swiper -->
+                <script>
+                    var jsSwiper01 = new Swiper(".jsSwiper01", {
+                        slidesPerView: 3,
+                        spaceBetween: 24,
+                        pagination: {
+                            el: ".jsSwiper01 .swiper-pagination",
+                            clickable: true,
+                        },
+                        navigation: {
+                            nextEl: ".jsSwiper01 .swiper-button-next",
+                            prevEl: ".jsSwiper01 .swiper-button-prev",
+                        },
+                    });
+                    ("use strict");
+                    var $window = $(window);
+                    function run() {
+                        var fName = arguments[0],
+                            aArgs = Array.prototype.slice.call(arguments, 1);
+                        try {
+                            fName.apply(window, aArgs);
+                        } catch (err) {}
+                    }
+                    /* chart */
+                    function _chart() {
+                        $(".chart").appear(function () {
+                            setTimeout(function () {
+                                $(".chart").easyPieChart({
+                                    delay: 3000,
+                                    barColor: "#edeaf6",
+                                    trackColor: "#edeaf6",
+                                    scaleColor: false,
+                                    lineWidth: 7,
+                                    trackWidth: 7,
+                                    size: 82,
+                                    lineCap: "round",
+                                    onStep: function (from, to, percent) {
+                                        this.el.children[0].innerHTML = Math.round(percent);
+                                    },
+                                });
+                            }, 150);
+                        });
+                    }
+                    $(document).ready(function () {
+                        run(_chart);
+                    });
+                </script>
+            </div>
+
+            <div class="list_wrap01">
+                <div class="gTitle_wrap01">
+                    <h3 class="title_wrap01">저온 저장고</h3>
+                    <div class="gRt">
+                        <button class="mBtn1 w115">저장 가이드</button>
+                    </div>
+                </div>
+                <!-- swiper -->
+                <div class="swiper jsSwiper02">
+                    <div class="swiper-wrapper">
+                        <!-- slide -->
+                        <div class="swiper-slide">
+                            <div class="con">
+                                <div class="tit">
+                                    <div class="ti">작물 <strong>토마토</strong></div>
+                                    <div class="tx">
+                                        <div class="i1"><em>온도</em> <span>2°C</span></div>
+                                        <div class="i2"><em>습도</em> <span>93%</span></div>
+                                        <img src="images/_gate_img_tomato01_s.png" alt="토마토" />
+                                    </div>
+                                </div>
+                                <div class="list">
+                                    <ul>
+                                        <li>
+                                            <span class="ti">상품</span>
+                                            <span class="tx">0 kg</span>
+                                            <span class="da">D-0일</span>
+                                        </li>
+                                        <li>
+                                            <span class="ti">중품</span>
+                                            <span class="tx">0 kg</span>
+                                            <span class="da">D-0일</span>
+                                        </li>
+                                        <li>
+                                            <span class="ti">하품</span>
+                                            <span class="tx">0 kg</span>
+                                            <span class="da">D-0일</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="button">
+                                    <button>출하 하기</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //slide -->
+                        <!-- slide -->
+                        <div class="swiper-slide">
+                            <div class="con">
+                                <div class="tit">
+                                    <div class="ti">작물 <strong>딸기</strong></div>
+                                    <div class="tx">
+                                        <div class="i1"><em>온도</em> <span>2°C</span></div>
+                                        <div class="i2"><em>습도</em> <span>93%</span></div>
+                                        <img src="images/_gate_img_berry01_s.png" alt="딸기" />
+                                    </div>
+                                </div>
+                                <div class="list">
+                                    <ul>
+                                        <li>
+                                            <span class="ti"></span>
+                                            <span class="tx">0 kg</span>
+                                            <span class="da">D-0일</span>
+                                        </li>
+                                        <li>
+                                            <span class="ti"></span>
+                                            <span class="tx">0 kg</span>
+                                            <span class="da">D-0일</span>
+                                        </li>
+                                        <li>
+                                            <span class="ti">하품</span>
+                                            <span class="tx">0 kg</span>
+                                            <span class="da">D-0일</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="button">
+                                    <button>출하 하기</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //slide -->
+                        <!-- slide -->
+                        <div class="swiper-slide">
+                            <div class="con">
+                                <div class="tit">
+                                    <div class="ti">작물 <strong>파프리카</strong></div>
+                                    <div class="tx">
+                                        <div class="i1"><em>온도</em> <span>2°C</span></div>
+                                        <div class="i2"><em>습도</em> <span>93%</span></div>
+                                        <img src="images/_gate_img_paprika01_s.png" alt="파프리카" />
+                                    </div>
+                                </div>
+                                <div class="list">
+                                    <ul>
+                                        <li>
+                                            <span class="ti"></span>
+                                            <span class="tx">0 kg</span>
+                                            <span class="da">D-0일</span>
+                                        </li>
+                                        <li>
+                                            <span class="ti"></span>
+                                            <span class="tx">0 kg</span>
+                                            <span class="da">D-0일</span>
+                                        </li>
+                                        <li>
+                                            <span class="ti">하품</span>
+                                            <span class="tx">0 kg</span>
+                                            <span class="da">D-0일</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="button">
+                                    <button>출하 하기</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //slide -->
+                        <!-- slide -->
+                        <div class="swiper-slide nodata">
+                            <p><span>표시할 작물이 없습니다.</span></p>
+                        </div>
+                        <!-- //slide -->
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                <!-- //swiper -->
+                <script>
+                    var jsSwiper02 = new Swiper(".jsSwiper02", {
+                        slidesPerView: "auto",
+                        spaceBetween: 22,
+                        pagination: {
+                            el: ".jsSwiper02 .swiper-pagination",
+                            clickable: true,
+                        },
+                        navigation: {
+                            nextEl: ".jsSwiper02 .swiper-button-next",
+                            prevEl: ".jsSwiper02 .swiper-button-prev",
+                        },
+                    });
+                </script>
+            </div>
+
+            <div class="flex_wrap01">
+                <!-- 오늘의 시세 -->
+                <div class="flex">
+                    <div class="gTitle_wrap01">
+                        <h3 class="title_wrap01">오늘의 시세 <span class="s">2022년 03월 03일</span></h3>
+                        <div class="gRt">
+                            <button class="mBtn1">더보기</button>
+                        </div>
+                    </div>
+                    <!-- board -->
+                    <div class="board_wrap01">
+                        <table>
+                            <caption>
+                                오늘의 시세
+                            </caption>
+                            <colgroup>
+                                <col span="2" width="25%" />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">상품</th>
+                                    <th scope="col">중품</th>
+                                    <th scope="col">하품</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row"><strong>토마토(10Kg)</strong></th>
+                                    <td class="tar">28,700원 <span class="s">1,375</span></td>
+                                    <td class="tar">28,700원 <span class="s">1,375</span></td>
+                                    <td class="tar">28,700원 <span class="s">1,375</span></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><strong>딸기(2Kg)</strong></th>
+                                    <td class="tar">28,700원 <span class="s">1,375</span></td>
+                                    <td class="tar">28,700원 <span class="s">1,375</span></td>
+                                    <td class="tar">28,700원 <span class="s">1,375</span></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><strong>파프리카(5Kg)</strong></th>
+                                    <td class="tar">28,700원 <span class="s">1,375</span></td>
+                                    <td class="tar">28,700원 <span class="s">1,375</span></td>
+                                    <td class="tar">28,700원 <span class="s">1,375</span></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">-</th>
+                                    <td class="tar">-</td>
+                                    <td class="tar">-</td>
+                                    <td class="tar">-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- //board -->
+                </div>
+                <!-- //오늘의 시세 -->
+                <!-- 랭킹 -->
+                <div class="flex">
+                    <div class="gTitle_wrap01">
+                        <h3 class="title_wrap01">랭킹</h3>
+                        <div class="gRt">
+                            <button class="mBtn1">더보기</button>
+                        </div>
+                    </div>
+                    <!-- board -->
+                    <div class="board_wrap01">
+                        <table>
+                            <caption>
+                                랭킹
+                            </caption>
+                            <colgroup>
+                                <col width="62px" />
+                                <col width="115px" />
+                                <col width="148px" />
+                                <col width="62px" />
+                                <col width="115px" />
+                                <col width="*" />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col" colspan="3">생산량 랭킹</th>
+                                    <th scope="col" colspan="3">매출액 랭킹</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="primary">
+                                    <td>123위</td>
+                                    <td>홍길동</td>
+                                    <td>123,123 ton</td>
+                                    <td>123위</td>
+                                    <td>홍길동</td>
+                                    <td>123,123 ton</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td></td>
+                                    <td>123,123 ton</td>
+                                    <td>1</td>
+                                    <td></td>
+                                    <td>123,123 ton</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td></td>
+                                    <td>123,123 ton</td>
+                                    <td>2</td>
+                                    <td></td>
+                                    <td>123,123 ton</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td></td>
+                                    <td>123,123 ton</td>
+                                    <td>3</td>
+                                    <td></td>
+                                    <td>123,123 ton</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- //board -->
+                </div>
+                <!-- //랭킹 -->
+            </div>
+            <!-- HTML 끝-->
+        </div>
+
+        <aside class="layerPopup -gate_s" id="upgradHousePopup">
+            <section class="layerPopup__inner">
+                <div class="moviePopup__top">
+                    <h2 class="moviePopup__tit">하우스 증축</h2>
+                </div>
+                <div class="moviePopup__content -house">
+                    <h3><span id="upgradHouseSenarioNm"></span> 하우스 1,000평을 증축하시겠습니까?</h3>
+                    <div class="imgBox">
+                        <img src="./files/img_house.png" alt="" />
+                    </div>
+                    <div class="grayBox">
+                        <div class="dp-inline">
+                            <h4><strong>비용:15억원</strong></h4>
+                            <ul>
+                                <li>- 1,000평 벤로형 유리 온실 : 10억원</li>
+                                <li>- 스마트팜 설비 : 4억원</li>
+                                <li>- 스마트팜 시스템 : 3천만원</li>
+                                <li>- 기타 재배 시설 : 7천만원</li>
+                            </ul>
+                        </div>
+                        <div class="dp-inline">
+                            <h4><strong>예상 매출 및 수익</strong></h4>
+                            <ul>
+                                <li id="hrvstAmt"></li>
+                                <li id="salamt"></li>
+                                <li id="ern"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="desc">*최대 10,000평까지 확장할 수 있습니다.</p>
+                    <div class="btnControl">
+                        <input type="hidden" id="upgradHouseSenarioKey" />
+                        <input type="hidden" id="upgradHouseSchulYear" />
+                        <input type="hidden" id="upgradHouseCtvtAnl" />
+                        <button class="btn" type="button" onclick="closeLayerPop('#upgradHousePopup')">취소</button>
+                        <button class="btn -mediumBlue" type="button" onclick="upgradHouseAfterPopup()">확장</button>
+                    </div>
+                    <button type="button" class="layerPopup__close" onclick="closeLayerPop('#upgradHousePopup')">닫기</button>
+                </div>
+            </section>
+        </aside>
+
+        <aside class="layerPopup -gate_s" id="saleCropResultPopup"></aside>
+
+        <aside class="layerPopup -gate_s" id="upgradHouseAfterPopup">
+            <section class="layerPopup__inner">
+                <div class="moviePopup__top">
+                    <h2 class="moviePopup__tit">하우스 증축</h2>
+                </div>
+                <div class="moviePopup__content -house" id="upgradHouseAfterDiv"></div>
+            </section>
+        </aside>
+
+        <!--!!비용부족-->
+        <aside class="layerPopup -gate_l" id="popup5">
+            <section class="layerPopup__inner">
+                <div class="moviePopup__top">
+                    <h3 class="moviePopup__tit">저장관리</h3>
+                </div>
+                <div class="moviePopup__content -store">
+                    <h3>수확한 작물은 저장 기간에 따라 등급이 하락됩니다.</h3>
+                    <div class="tableWrap mgT40">
+                        <table>
+                            <thead class="alignLeft">
+                                <tr>
+                                    <th></th>
+                                    <th>토마토</th>
+                                    <th>딸기</th>
+                                    <th>파프리카</th>
+                                </tr>
+                            </thead>
+                            <tbody class="alignLeft">
+                                <tr>
+                                    <th>상품</th>
+                                    <td>생산일~+7일</td>
+                                    <td>생산일~+7일</td>
+                                    <td>생산일~+10일</td>
+                                </tr>
+                                <tr>
+                                    <th>중품</th>
+                                    <td>생산일+8~</td>
+                                    <td>생산일+8~</td>
+                                    <td>생산일+11~</td>
+                                </tr>
+                                <tr>
+                                    <th>하품</th>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="tit mgT50">*저장 관리 방법</p>
+                    <p class="desc mgT10">에틸렌에 민감한 품목은 에틸렌을 많이 생성하는 품목과 혼합 저장해서는 안됩니다.</p>
+                    <div class="tableWrap mgT25">
+                        <table class="alignCenter">
+                            <thead>
+                                <tr>
+                                    <th>품명</th>
+                                    <th>저장 온도(℃)</th>
+                                    <th>상대 습도(%)</th>
+                                    <th>어는점(℃)</th>
+                                    <th>에틸렌 생성</th>
+                                    <th>에틸렌 민감성</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>토마토</td>
+                                    <td>8~10</td>
+                                    <td>85~90</td>
+                                    <td>-0.5</td>
+                                    <td>많음</td>
+                                    <td>낮음</td>
+                                </tr>
+                                <tr>
+                                    <td>딸기</td>
+                                    <td>0~4</td>
+                                    <td>90~95</td>
+                                    <td>-0.8</td>
+                                    <td>적음</td>
+                                    <td>낮음</td>
+                                </tr>
+                                <tr>
+                                    <td>파프리카</td>
+                                    <td>7~10</td>
+                                    <td>95~98</td>
+                                    <td>-0.7</td>
+                                    <td>적음</td>
+                                    <td>낮음</td>
+                                </tr>
+                                <tr>
+                                    <td>오이</td>
+                                    <td>10~12</td>
+                                    <td>85~90</td>
+                                    <td>-0.5</td>
+                                    <td>적음</td>
+                                    <td>높음</td>
+                                </tr>
+                                <tr>
+                                    <td>참외</td>
+                                    <td>5~7</td>
+                                    <td>90~95</td>
+                                    <td>-1.2</td>
+                                    <td>중간</td>
+                                    <td>중간</td>
+                                </tr>
+                                <tr>
+                                    <td>멜론</td>
+                                    <td>2~5</td>
+                                    <td>95</td>
+                                    <td>-1.2</td>
+                                    <td>많음</td>
+                                    <td>중간</td>
+                                </tr>
+                                <tr>
+                                    <td>수박</td>
+                                    <td>10~15</td>
+                                    <td>90</td>
+                                    <td>-0.4</td>
+                                    <td>매우 적음</td>
+                                    <td>높음</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="btnControl">
+                        <button class="btn -mediumBlue" type="button" onclick="closeLayerPop('#popup5')">확인</button>
+                    </div>
+
+                    <button type="button" class="layerPopup__close" onclick="closeLayerPop('#popup5')">닫기</button>
+                </div>
+            </section>
+        </aside>
+
+        <!--!!저장관리-->
+        <aside class="layerPopup -gate_s" id="lackCostPopup">
+            <section class="layerPopup__inner">
+                <div class="moviePopup__top">
+                    <h3 class="moviePopup__tit">비용 부족</h3>
+                </div>
+                <div class="moviePopup__content -boxSale">
+                    <h3>
+                        하우스 증축 비용이 <br />
+                        <span id="lackCostSpan"></span>원 부족합니다
+                    </h3>
+                    <div class="btnControl">
+                        <button class="btn -mediumBlue" type="button" onclick="closeLayerPop('#lackCostPopup')">확인</button>
+                    </div>
+
+                    <button type="button" class="layerPopup__close" onclick="closeLayerPop('#lackCostPopup')">닫기</button>
+                </div>
+            </section>
+        </aside>
+
+        <!--!!증축 불가 -->
+        <aside class="layerPopup -gate_s" id="failUpgradHousePopup">
+            <section class="layerPopup__inner">
+                <div class="moviePopup__top">
+                    <h3 class="moviePopup__tit">증축 불가</h3>
+                </div>
+                <div class="moviePopup__content -boxSale">
+                    <h3 id="houseUpgrdeText"></h3>
+                    <div class="btnControl">
+                        <button class="btn -mediumBlue" type="button" onclick="pageReload()">확인</button>
+                    </div>
+
+                    <button type="button" class="layerPopup__close" onclick="pageReload()">닫기</button>
+                </div>
+            </section>
+        </aside>
+
+        <aside class="layerPopup -gate_l -analyView" id="saleCropPopup">
+            <section class="layerPopup__inner">
+                <div class="moviePopup__top">
+                    <h3 class="moviePopup__tit">출하하기</h3>
+                </div>
+                <div class="moviePopup__content -ship">
+                    <div class="tabs">
+                        <div class="tabs__btnGroup">
+                            <button
+                                type="button"
+                                role="tab"
+                                aria-selected="true"
+                                aria-controls="tab01e153bc-99bc-11ec-b75a-0242ac120002"
+                                class="tabs__btn curpcGraphTab"
+                                data-senario_key="01e153bc-99bc-11ec-b75a-0242ac120002"
+                                id="saleCropTab01e153bc-99bc-11ec-b75a-0242ac120002"
+                                tabindex="0"
+                            >
+                                파프리카
+                            </button>
+
+                            <button
+                                type="button"
+                                role="tab"
+                                aria-selected="false"
+                                aria-controls="tab3c47d7c1-2fb1-11ec-ac63-0242ac120002"
+                                class="tabs__btn curpcGraphTab"
+                                data-senario_key="3c47d7c1-2fb1-11ec-ac63-0242ac120002"
+                                id="saleCropTab3c47d7c1-2fb1-11ec-ac63-0242ac120002"
+                                tabindex="1"
+                            >
+                                딸기
+                            </button>
+
+                            <button
+                                type="button"
+                                role="tab"
+                                aria-selected="false"
+                                aria-controls="tab88803c1a-cc91-4b9f-b9d3-ac4ae53fc14e"
+                                class="tabs__btn curpcGraphTab"
+                                data-senario_key="88803c1a-cc91-4b9f-b9d3-ac4ae53fc14e"
+                                id="saleCropTab88803c1a-cc91-4b9f-b9d3-ac4ae53fc14e"
+                                tabindex="2"
+                            >
+                                토마토
+                            </button>
+                        </div>
+                        <div class="tabPanel">
+                            <div
+                                class="tabPanel__item saleCropTabPenel"
+                                role="tabpanel"
+                                tabindex="0"
+                                aria-labelledby="saleCropTab01e153bc-99bc-11ec-b75a-0242ac120002"
+                                id="tab01e153bc-99bc-11ec-b75a-0242ac120002"
+                                style="display: none"
+                            >
+                                <div id="01e153bc-99bc-11ec-b75a-0242ac120002Graph" class="graphArea" style="width: 100%; height: 320px; background: #ccc"></div>
+                                <div class="tableWrap mgT40" id="cropCurpcListTemplateDiv01e153bc-99bc-11ec-b75a-0242ac120002"></div>
+                                <div class="tableWrap mgT30" id="cropStorgeDTOTemplateDiv01e153bc-99bc-11ec-b75a-0242ac120002"></div>
+                            </div>
+
+                            <div
+                                class="tabPanel__item saleCropTabPenel"
+                                role="tabpanel"
+                                tabindex="0"
+                                aria-labelledby="saleCropTab3c47d7c1-2fb1-11ec-ac63-0242ac120002"
+                                id="tab3c47d7c1-2fb1-11ec-ac63-0242ac120002"
+                                style="display: none"
+                            >
+                                <div id="3c47d7c1-2fb1-11ec-ac63-0242ac120002Graph" class="graphArea" style="width: 100%; height: 320px; background: #ccc"></div>
+                                <div class="tableWrap mgT40" id="cropCurpcListTemplateDiv3c47d7c1-2fb1-11ec-ac63-0242ac120002"></div>
+                                <div class="tableWrap mgT30" id="cropStorgeDTOTemplateDiv3c47d7c1-2fb1-11ec-ac63-0242ac120002"></div>
+                            </div>
+
+                            <div
+                                class="tabPanel__item saleCropTabPenel"
+                                role="tabpanel"
+                                tabindex="0"
+                                aria-labelledby="saleCropTab88803c1a-cc91-4b9f-b9d3-ac4ae53fc14e"
+                                id="tab88803c1a-cc91-4b9f-b9d3-ac4ae53fc14e"
+                                style="display: none"
+                            >
+                                <div id="88803c1a-cc91-4b9f-b9d3-ac4ae53fc14eGraph" class="graphArea" style="width: 100%; height: 320px; background: #ccc"></div>
+                                <div class="tableWrap mgT40" id="cropCurpcListTemplateDiv88803c1a-cc91-4b9f-b9d3-ac4ae53fc14e"></div>
+                                <div class="tableWrap mgT30" id="cropStorgeDTOTemplateDiv88803c1a-cc91-4b9f-b9d3-ac4ae53fc14e"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btnControl">
+                        <button class="btn -mediumBlue" type="button" id="saleCropBtn">출하</button>
+                    </div>
+                    <button type="button" class="layerPopup__close" onclick="closeLayerPop('#saleCropPopup')">닫기</button>
+                </div>
+            </section>
+        </aside>
+
+        <div class="container">
+            <div class="icon-top-wrap">
+                <a href="/se/ctvtsmlt/gate.do#" class="icon-top"></a>
+            </div>
+        </div>
+        <footer>
+            <div class="footer_t">
+                <div style="margin-right: 206px">
+                    <div class="logo" style="width: 175px"></div>
+                </div>
+
+                <div>
+                    <a href="/se/ac/crseList.do" class="fz-16 font-weight-bold">전체 과정</a>
+                </div>
+
+                <div>
+                    <a href="/se/myLrnng/progrsList.do" class="fz-16 font-weight-bold">내 학습</a>
+                </div>
+
+                <div>
+                    <a href="/se/virtlprct/main.do" class="fz-16 font-weight-bold">가상 실습</a>
+
+                    <a href="/se/ctrlsmlt/ctrlSmltList.do" class="fz-14 mycolor1">복합환경제어 시뮬레이션</a>
+
+                    <a
+                        style="cursor: pointer"
+                        class="fz-14 mycolor1"
+                        onclick="window.open('/se/nut/main.do','NtrntslutnSimulation','width=1615, height=910, location=no,menubar=no,resizable=no,status=no,titlebar=no,toolbar=no,scrollbars=no')"
+                        >양액 시뮬레이션</a
+                    >
+                </div>
+
+                <div>
+                    <a href="/se/ctvtsmlt/gate.do" class="fz-16 font-weight-bold">재배 튜토리얼</a>
+                </div>
+
+                <div>
+                    <a href="/se/prctnote/tmLine.do" class="fz-16 font-weight-bold">데이터 학습</a>
+
+                    <a href="/se/prctnote/tmLine.do" class="fz-14 mycolor1">실습온실 마이데이터</a>
+
+                    <a href="/se/bigdata/cmpr.do" class="fz-14 mycolor1">스마트팜 우수농가 데이터 학습</a>
+
+                    <a href="/se/dataLrnng/data/downloadPage.do" class="fz-14 mycolor1">스마트팜 데이터 다운로드</a>
+                </div>
+
+                <div>
+                    <a href="/se/cmmnty/noti/brdList.do" class="fz-16 font-weight-bold">학습지원</a>
+
+                    <a href="/se/cmmnty/noti/brdList.do" class="fz-14 mycolor1">공지사항</a>
+
+                    <a href="/se/support/faqList.do" class="fz-14 mycolor1">FAQ</a>
+
+                    <a href="/se/support/inqryWrite.do" class="fz-14 mycolor1">1:1 문의</a>
+
+                    <a href="/se/support/tec.do" class="fz-14 mycolor1">기술지원</a>
+
+                    <a href="/se/support/prog.do" class="fz-14 mycolor1">학습 프로그램 설치</a>
+                </div>
+            </div>
+
+            <div class="footer_b">
+                <div class="inner">
+                    <div class="top pb-3">
+                        <a href="/se/indvdlInfoPage.do" class="fz-14 mycolor1">개인정보처리방침</a>
+                        <a href="/se/prtcCpyrhtPage.do" class="fz-14 mycolor1">저작권보호정책</a>
+                        <a href="/se/stplatPage.do" class="fz-14 mycolor1">이용약관</a>
+                    </div>
+                    <p class="pb-2 mycolor3 fz-14">[29046] 충북 옥천군 옥천읍 대학길 15(금구리) 충북도립대학교 Tel. 043-220-5320 FAX. 043-220-5319</p>
+                    <p class="pb-2 mycolor3 fz-14">Copyright(C) 충북도립대학교. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <script src="./js/vendor/jquery.validate.min.js"></script>
+        <script src="./js/vendor/jquery.form.min.js"></script>
+        <script src="./js/validation.js"></script>
+
+        <script src="./js/vendor/jsviews.min.js"></script>
+        <script src="./js/vendor/modernizr-3.5.0.min.js"></script>
+        <script src="./js/vendor/jquery.easing.1.3.js"></script>
+        <script src="./js/vendor/slick.min.js"></script>
+        <script src="./js/vendor/jquery.counterup.min.js"></script>
+        <script src="./js/ui.js"></script>
+
+        <script src="./js/vendor/highchart/highcharts.js"></script>
+        <script src="./js/vendor/highchart/series-label.js"></script>
+        <script src="./js/vendor/highchart/exporting.js"></script>
+        <script src="./js/vendor/highchart/export-data.js"></script>
+        <script src="./js/vendor/highchart/bullet.js"></script>
+        <script src="./js/percircle.js"></script>
+        <script>
+            //SCRIPT 시작
+            //SCRIPT 끝
+        </script>
+    </body>
+</html>

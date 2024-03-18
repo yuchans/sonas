@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <title>1주차 | 재배 시뮬레이션 스마트팜</title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=1445, initial-scale=1.0" />
+        <link rel="apple-touch-icon" href="icon.png" />
+        <!-- Place favicon.ico in the root directory -->
+        <link rel="stylesheet" href="/css/vendor/normalize.css" />
+        <link rel="stylesheet" href="/css/vendor/font-awesome/css/font-awesome.min.css" />
+        <script src="/js/vendor/jquery-1.12.0.min.js"></script>
+        <script src="/js/vendor/t.min.js"></script>
+        <link rel="stylesheet" href="/css/week_1_style.css" />
+        <link rel="stylesheet" href="/css/vendor/jquery-ui.all.css" />
+        <style>
+            .success {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1000;
+                text-align: center;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.5s;
+            }
+
+            .success .tooltip {
+                position: absolute;
+                left: -285px;
+                top: -110px;
+                opacity: 0;
+                transition: all 1s 3s;
+            }
+
+            .success.-active {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .success.-active .tooltip {
+                opacity: 1;
+            }
+
+            .success__inner {
+                position: relative;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 200;
+            }
+
+            .success__tit {
+                margin-top: 80px;
+            }
+
+            .success__point {
+                margin-top: 50px;
+                font-size: 22px;
+                color: #ffde38;
+            }
+
+            .success__box {
+                margin-top: 34px;
+            }
+
+            .btnMain {
+                display: block;
+                position: absolute;
+                left: 50%;
+                bottom: 120px;
+                margin-left: calc(-205px / 2);
+            }
+
+            .nextMission {
+                position: absolute;
+                right: 65px;
+                bottom: 120px;
+                transform: translateX(300px);
+                transition: transform 0.3s 2s;
+                opacity: 0;
+                visibility: hidden;
+            }
+
+            .success.-active .nextMission {
+                transform: translateX(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .nextMission__imgBox {
+                position: relative;
+                width: 141px;
+                height: 169px;
+                display: block;
+                z-index: 10;
+            }
+
+            .nextMission__mask {
+                display: block;
+                width: 137px;
+                height: 137px;
+                overflow: hidden;
+                border-radius: 50%;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                background: #95735c;
+            }
+
+            .nextMission__mask.-hover img {
+                transform: translateY(-50px);
+            }
+
+            .nextMission__head {
+                position: absolute;
+                left: 5px;
+                top: 49px;
+                z-index: 10;
+                transform: translateY(0);
+                transition: transform 0.3s;
+            }
+
+            .nextMission__head.-hover {
+                transform: translateY(-50px);
+            }
+
+            .nextMission__txt {
+                display: block;
+                font-family: jalnan;
+                color: #fdd544;
+                font-size: 20px;
+                letter-spacing: -0.2px;
+                margin-top: 20px;
+            }
+
+            .nextMission__arrow {
+                position: absolute;
+                right: 10px;
+                top: 9px;
+                transform: translateX(-54px);
+                opacity: 0;
+            }
+
+            .nextMission__arrow.-hover {
+                animation: nextMission 0.3s 0.3s forwards;
+            }
+
+            .nextMission__img {
+                position: absolute;
+                left: 0;
+                bottom: -50px;
+                transition: all 0.3s;
+                transform: translateY(0);
+            }
+
+            .nextMission.-active {
+                display: none;
+            }
+
+            #canvasRound {
+                position: absolute;
+                width: 320px;
+                height: 160px;
+                left: -91px;
+                top: 21px;
+                z-index: -1;
+            }
+        </style>
+    </head>
+    <body>
+        <article role="main" class="stage week-1 miss-1-1">
+            <div class="stage__bg"></div>
+            <div class="stage__top">
+                <h1 class="stage__tit">시설양묘 1년차</h1>
+                <a href="/html/ctvtsmlt/lobby.html" class="stage__exit">나가기</a>
+            </div>
+            <input type="checkbox" id="chkFx" checked="checked" />
+            <div class="tip">
+                <button type="button" class="tipBtn">선생님팁</button>
+                <div class="tip__star">
+                    <div class="iconStar"></div>
+                    <small class="iconStar"></small>
+                    <div class="tip__line">
+                        <img src="/images/miss/bg_tip_line.png" alt="" class="tip__lineImg" />
+                    </div>
+                </div>
+            </div>
+            <div class="stage__count">
+                <p class="stage__countTit">미션 도전횟수</p>
+                <p class="stage__countNum">0</p>
+            </div>
+
+            <!--컨텐츠 시작 -->
+            <section class="stage__content mission_01_01 -active">
+                <h2 class="miss__tit">1. 소나무 본수 산정</h2>
+                <p class="miss__txt">
+                    우리나라의 대표적인 용기묘 조림수종인 소나무 2년생 용기묘를 200ha에 심으려고 합니다.<br />
+                    전체 필요한 식재 본수와 그에 알맞은 실제 생산 본수를 알아보세요
+                </p>
+
+                <ol style="display: flex; justify-content: center; text-align: center; gap: 3rem; width: 858px; margin: 0 auto">
+                    <li style="flex: 1 1 0%">
+                        <p class="miss__tit_2">전체 식재 본수</p>
+                        <div class="miss__img">
+                            <img
+                                src="/images/miss/week01/miss_1_2/mission_01_02_1.jpg"
+                                alt="강원도 동해안 산불 피해지의 소나무 용기묘 조림지"
+                                style="width: 100%; height: 100%; object-fit: cover"
+                            />
+                        </div>
+                        <div style="margin-top: 2rem; display: flex; align-items: center; justify-content: center; gap: 1rem">
+                            <div>
+                                <input type="text" class="miss-1-2__inp" id="miss_1_2_inp01" value="0" />
+                                <label for="miss_1_2_inp01" class="miss-1-2__label">본</label>
+                            </div>
+                            <p style="font-size: 22px">(1haX 3000본)</p>
+                        </div>
+                    </li>
+                    <li style="flex: 1 1 0%">
+                        <p class="miss__tit_2">실제생산 본수</p>
+                        <div class="miss__img">
+                            <img
+                                src="/images/miss/week01/miss_1_2/mission_01_02_2.jpg"
+                                alt="강원도 동해안 산불 피해지의 소나무 용기묘 조림지"
+                                style="width: 100%; height: 100%; object-fit: cover"
+                            />
+                        </div>
+                        <div style="margin-top: 2rem; display: flex; align-items: center; justify-content: center; gap: 1rem">
+                            <div>
+                                <input type="text" class="miss-1-2__inp" id="miss_1_2_inp02" value="0" />
+                                <label for="miss_1_2_inp02" class="miss-1-2__label">본</label>
+                            </div>
+                            <p style="font-size: 22px">(전체 식재본수×1.1)</p>
+                        </div>
+                    </li>
+                </ol>
+
+                <div class="btnGroup">
+                    <a href="#this" onclick="copleteCheck()" class="btn -complete" style="margin-left: 0">완료</a>
+                </div>
+
+                <!--미션1-2 tip -->
+                <aside class="tipBox miss-1-2">
+                    <div class="tipBox__inner">
+                        <div class="tipBox__tec">
+                            <span class="tipBox__tecStar"></span>
+                            <span class="tipBox__starLine"></span>
+                        </div>
+                        <div class="tipBox__txtBox">
+                            <h2 class="tipBox__tit">선생님의 재배 tip</h2>
+                            <p class="miss-1-1__tipTxt">
+                                소나무 2년생 용기묘를 200ha에 식재할 수 있는 본수를 <br />생산하고자 할 때, ha당 식재본수 는 3,000본으로 합니다. <br />따라서 전체 식재 묘목 본수는
+                                600,000본입니다. <br />용기묘 2년생 합격묘 600,000본을 생산하기 위해서는 득묘율 90%를 고려하면<br />
+                                불량묘 10%를 버려야 하므로 실제 생산해야 하는 본수는<br />
+                                <strong>600,000본 ×1.1 = 660,000</strong>입니다.
+                            </p>
+                            <div style="margin: 0 55px; border-top: 4px dotted #362119; padding-top: 20px; font-size: 18px; line-height: 30px">
+                                <p style="font-size: 26px; line-height: 48px; color: #ee4344">
+                                    1ha(헥타아르)당 식재 본수: 3000본 전체 식재 본수 = 200haX 3000본 <br />실제 생산 본수 = 600,000본 ×1.1 = 660,000본
+                                </p>
+                            </div>
+                            <button type="button" class="tipBox__close">창닫기</button>
+                        </div>
+                    </div>
+                </aside>
+                <!-- 틀림답 -->
+                <aside class="incorrect miss-1-1">
+                    <div class="incorrect__inner">
+                        <button type="button" class="incorrect__handBox">
+                            <span class="incorrect__handImg"></span>
+                            <p class="incorrect__txt">
+                                <span class="answer -type01"
+                                    >전체 식재 본수가<br />
+                                    정확하지 않습니다.
+                                </span>
+                                <span class="answer -type02"
+                                    >실제 생산 본수 개수가<br />
+                                    정확하지 않습니다.
+                                </span>
+                                다시 시도해보세요.
+                            </p>
+                        </button>
+                    </div>
+                </aside>
+
+                <!-- 미션 성공 -->
+                <aside class="success miss-1-1">
+                    <div class="success__inner">
+                        <h2 class="success__tit"><img src="/images/miss/txt_complete.png" alt="미션성공" /></h2>
+                        <p class="success__point">
+                            1ha(헥타아르)당 식재 본수 3000본이므로 200ha의 전체 생산묘목 본수는<br />
+                            10%를 더하여 600,000본 ×1.1 = 660,000본 입니다.
+                        </p>
+                        <div class="success__box">
+                            <img src="/images/miss/week01/miss_1_2/success_miss_1_2.png" alt="" />
+                        </div>
+                        <a href="/html/ctvtsmlt/lobby.html" class="btnMain" style="left: 42%"></a>
+                        <a href="/html/week01/mission_01_02.html" class="btnNext" style="left: 58%">
+                            <img src="/images/sprite/nextBtn.png" alt="" />
+                        </a>
+                    </div>
+                </aside>
+            </section>
+            <!--컨텐츠 끝 -->
+        </article>
+    </body>
+    <script src="/js/vendor/jquery.ui.datapicker.min.js"></script>
+    <script src="/js/vendor/waypoints.min.js"></script>
+    <script src="/js/vendor/datepicker-ko.js"></script>
+    <script src="/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="/js/vendor/jquery.easing.1.3.js"></script>
+    <script src="/js/vendor/slick.min.js"></script>
+    <script src="/js/vendor/jquery.counterup.min.js"></script>
+    <script src="/js/ui.js"></script>
+
+    <script src="/js/vendor/jquery.confetti.js"></script>
+    <script src="/js/vendor/jquery-ui.js"></script>
+    <script src="/js/miss.min.js"></script>
+    <script src="/js/sound.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var challengeCount = 0; //도전횟수
+            loadingComplete();
+            //시작될때 스크립트 이행
+        });
+
+        const miss_1_2_inp01 = Number(document.getElementById("miss_1_2_inp01").value);
+        const miss_1_2_inp02 = Number(document.getElementById("miss_1_2_inp02").value);
+        const missPage = document.querySelector(".incorrect");
+        const missAudio = new Audio("/sound/strawberry/01_Wrong.mp3");
+
+        function copleteCheck() {
+            const miss_1_2_inp01_value = parseInt(document.getElementById("miss_1_2_inp01").value.replace(/,/g, ""), 10);
+            const miss_1_2_inp02_value = parseInt(document.getElementById("miss_1_2_inp02").value.replace(/,/g, ""), 10);
+            const stage__countNum = document.querySelector(".stage__countNum");
+
+            if (miss_1_2_inp01_value != 600000) {
+                missAudio.play();
+                stage__countNum.textContent = parseInt(stage__countNum.textContent, 10) + 1;
+                missPage.querySelector(".-type01").style.display = "block";
+                missPage.style.opacity = "1";
+                missPage.style.transform = "scale(1)";
+                missPage.style.visibility = "visible";
+            } else if (miss_1_2_inp02_value != 660000) {
+                missAudio.play();
+                stage__countNum.textContent = parseInt(stage__countNum.textContent, 10) + 1;
+                missPage.querySelector(".-type02").style.display = "block";
+                missPage.style.opacity = "1";
+                missPage.style.transform = "scale(1)";
+                missPage.style.visibility = "visible";
+            } else {
+                new Audio("/sound/sound_yea.mp3").play();
+                clear();
+            }
+        }
+
+        missPage.addEventListener("click", function () {
+            setTimeout(() => (missPage.querySelector(".answer").style.display = "none"), 300);
+            missPage.style.opacity = "0";
+            missPage.style.transform = "scale(0)";
+            missPage.style.visibility = "hidden";
+        });
+
+        const nextMissions = document.querySelector(".success .nextMission");
+
+        nextMissions.addEventListener("mouseenter", function () {
+            console.log(this.querySelector(".nextMission__arrow"));
+            this.querySelector(".nextMission__arrow").classList.add("-hover");
+            this.querySelector(".nextMission__head").classList.add("-hover");
+            this.querySelector(".nextMission__img").classList.add("-hover");
+            this.querySelector(".nextMission__mask").classList.add("-hover");
+        });
+        nextMissions.addEventListener("mouseleave", function () {
+            console.log(this.querySelector(".nextMission__arrow"));
+            this.querySelector(".nextMission__arrow").classList.remove("-hover");
+            this.querySelector(".nextMission__head").classList.remove("-hover");
+            this.querySelector(".nextMission__img").classList.add("-hover");
+            this.querySelector(".nextMission__mask").classList.remove("-hover");
+        });
+    </script>
+</html>

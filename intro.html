@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <title>5주차 | 재배 시뮬레이션 스마트팜</title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=1445, initial-scale=1.0" />
+        <link rel="apple-touch-icon" href="icon.png" />
+        <!-- Place favicon.ico in the root directory -->
+        <link rel="stylesheet" href="/css/vendor/normalize.css" />
+        <link rel="stylesheet" href="/css/vendor/font-awesome/css/font-awesome.min.css" />
+        <script src="/js/vendor/jquery-1.12.0.min.js"></script>
+        <script src="/js/vendor/t.min.js"></script>
+        <link rel="stylesheet" href="/css/week_5_style.css" />
+        <link rel="stylesheet" href="/css/vendor/jquery-ui.all.css" />
+    </head>
+    <body>
+        <!-- loading -->
+        <aside class="loading">
+            <div class="loading__icon -rain01 -hidden"></div>
+            <div class="loading__rain02 -hidden"></div>
+            <div class="loading__icon -tree"></div>
+            <h1 class="loading__tit">
+                <span>LOADING...</span>
+            </h1>
+        </aside>
+
+        <aside class="dataLoading">
+            <div class="dataLoading__inner">
+                <div class="dataLoading__img">
+                    <div class="dataLoading__sap"></div>
+                    <div class="dataLoading__bg"></div>
+                </div>
+                <p class="dataLoading__txt">잠시 기다려주세요...<br />데이터를 가저오고 있습니다.</p>
+            </div>
+        </aside>
+
+        <!-- //loading -->
+        <!-- 미션 인트로 -->
+        <article class="stage intro -active">
+            <button type="button" class="intro__close">닫기</button>
+
+            <div class="intro__control">
+                <button type="button" class="intro__chk01 -active">일정</button>
+                <button type="button" class="intro__chk02 -type01">파종</button>
+            </div>
+            <div class="slider">
+                <section class="stage__intro -tab01 -active">
+                    <h2 class="intro__tit">
+                        <small>재배 1주차</small>
+                        <span>작업일정</span>
+                    </h2>
+                    <div class="intro__cal">
+                        <img src="/images/miss/week01/img_cal_mission_01.png" alt="" />
+                        <div class="intro__yellow"></div>
+                    </div>
+                </section>
+                <section class="stage__intro -tab02">
+                    <h2 class="intro__tit">
+                        <small>재배 1주차</small>
+                        <span>파종작업</span>
+                    </h2>
+                    <div class="intro__subTab -mission01">
+                        <img src="/images/miss/week01/img_pan.png" alt="" class="intro__pan" />
+                        <img src="/images/miss/week01/img_pan_zoom.png" alt="" class="intro__panZoom" />
+                    </div>
+                </section>
+            </div>
+
+            <div class="intro__contentBox">
+                <span class="intro__tec">
+                    <i class="intro__tecM"></i>
+                    <i class="intro__tecE"></i>
+                </span>
+                <div class="intro__txtBox"></div>
+                <button type="button" class="intro__go">시작</button>
+            </div>
+        </article>
+    </body>
+    <script src="/js/vendor/jquery.ui.datapicker.min.js"></script>
+    <script src="/js/vendor/waypoints.min.js"></script>
+    <script src="/js/vendor/datepicker-ko.js"></script>
+    <script src="/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="/js/vendor/jquery.easing.1.3.js"></script>
+    <script src="/js/vendor/slick.min.js"></script>
+    <script src="/js/vendor/jquery.counterup.min.js"></script>
+    <script src="/js/ui.js"></script>
+
+    <script src="/js/vendor/jquery.motion.min.js"></script>
+    <!--<script src="/js/vendor/jquery.confetti.js"></script>-->
+    <script src="/js/vendor/jquery-ui.js"></script>
+    <script src="/js/miss.min.js"></script>
+    <script src="/js/sound.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //시작될때 스크립트 이행
+            $(window).load(function () {
+                var introTxt = '<p><span class="cYellow">색상코드강조</span>컨텐츠 내용</p>';
+                starting(introTxt, 35);
+            });
+
+            $(".slider").slick({
+                dots: false,
+                arrows: false,
+                autoplay: true,
+                autoplaySpeed: 3000,
+            });
+            $(".slider").on("beforeChange", function (event, slick, currentSlide, nextSlide) {
+                $(".intro__control button").eq(nextSlide).addClass("-active").siblings().removeClass("-active");
+                if (nextSlide == 1) {
+                    $(".intro__go").fadeIn();
+                }
+            });
+            $(".intro__control button").on("click", function () {
+                var $this = $(this);
+                $(".slider").slick("slickGoTo", $this.index());
+                $this.addClass("-active").siblings().removeClass("-active");
+            });
+
+            //인트로 관련
+            (function () {
+                //인트로 삭제
+                $(".intro__go").on("click", function () {
+                    $(".stage.intro").fadeOut();
+                    $(".mission_05_01").addClass("-active");
+                    setTimeout(function () {
+                        $(".guide").addClass("-hide");
+                        $(".imgNumBox").addClass("-active");
+                    }, 3000);
+                });
+            })();
+        });
+    </script>
+</html>

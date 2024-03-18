@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <title>1주차 | 재배 시뮬레이션 스마트팜</title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=1445, initial-scale=1.0" />
+        <link rel="apple-touch-icon" href="icon.png" />
+        <!-- Place favicon.ico in the root directory -->
+        <link rel="stylesheet" href="/css/vendor/normalize.css" />
+        <link rel="stylesheet" href="/css/vendor/font-awesome/css/font-awesome.min.css" />
+        <script src="/js/vendor/jquery-1.12.0.min.js"></script>
+        <script src="/js/vendor/t.min.js"></script>
+        <link rel="stylesheet" href="/css/mission_intro_style.css" />
+        <link rel="stylesheet" href="/css/vendor/jquery-ui.all.css" />
+    </head>
+    <body>
+        <!-- loading -->
+        <aside class="loading">
+            <div class="loading__icon -rain01 -hidden"></div>
+            <div class="loading__rain02 -hidden"></div>
+            <div class="loading__icon -tree"></div>
+            <h1 class="loading__tit">
+                <span>LOADING...</span>
+            </h1>
+        </aside>
+
+        <aside class="dataLoading">
+            <div class="dataLoading__inner">
+                <div class="dataLoading__img">
+                    <div class="dataLoading__sap"></div>
+                    <div class="dataLoading__bg"></div>
+                </div>
+                <p class="dataLoading__txt">잠시 기다려주세요...<br />데이터를 가저오고 있습니다.</p>
+            </div>
+        </aside>
+
+        <!-- //loading -->
+
+        <article role="main" class="stage mission__intro">
+            <div class="mission__introHeader">
+                <h1 class="mission__introTit">지난 재배결과</h1>
+                <p class="mission__percent">
+                    <small class="-type">재배 완료율</small>
+                    <span class="-num">14.5</span>
+                    <small class="-percent">%</small>
+                </p>
+            </div>
+            <dl class="mission__state">
+                <dt>지난 상태</dt>
+                <dd>발아</dd>
+                <dt>초세</dt>
+                <dd>
+                    <span>4000</span>
+                    <small>p</small>
+                </dd>
+                <dt>저번주 수확량</dt>
+                <dd>
+                    <span>1000</span>
+                    <small>kg</small>
+                </dd>
+                <dt>총 수확량</dt>
+                <dd>
+                    <span>20,000</span>
+                    <small>kg</small>
+                </dd>
+            </dl>
+            <div class="mission__growthData">
+                <h3 class="mission__growthDataTit">작물 생육 데이터</h3>
+                <dl>
+                    <dt>생장 길이</dt>
+                    <dd>10cm</dd>
+                    <dt>줄기 굵기</dt>
+                    <dd>10mm</dd>
+                    <dt>화방 높이</dt>
+                    <dd>10cm</dd>
+                    <dt>옆 길이</dt>
+                    <dd>10cm</dd>
+                    <dt>옆 폭</dt>
+                    <dd>10cm</dd>
+                    <dt>개화 화방 수</dt>
+                    <dd>10개</dd>
+                    <dt>옆수</dt>
+                    <dd>9개</dd>
+                    <dt>착과량</dt>
+                    <dd>10개</dd>
+                    <dt>착과화방</dt>
+                    <dd>10개</dd>
+                    <dt>수확화방</dt>
+                    <dd>10개</dd>
+                </dl>
+            </div>
+            <div class="mission__introImg">
+                <img src="/images/miss/img_sample.png" alt="" />
+            </div>
+        </article>
+    </body>
+    <script src="/js/vendor/jquery.ui.datapicker.min.js"></script>
+    <script src="/js/vendor/waypoints.min.js"></script>
+    <script src="/js/vendor/datepicker-ko.js"></script>
+    <script src="/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="/js/vendor/jquery.easing.1.3.js"></script>
+    <script src="/js/vendor/slick.min.js"></script>
+    <script src="/js/vendor/jquery.counterup.min.js"></script>
+    <script src="/js/ui.js"></script>
+
+    <script src="/js/miss.min.js"></script>
+    <script src="/js/sound.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var challengeCount = 0; //도전횟수
+
+            //시작될때 스크립트 이행
+            $(window).load(function () {
+                var timer = 500;
+                setTimeout(function () {
+                    $(".loading__tit span").text("COMPLETE");
+                }, timer);
+                setTimeout(function () {
+                    $(".loading").addClass("-slideUp");
+                    $(".-num").counterUp({
+                        delay: 10,
+                        time: 2000,
+                    });
+                }, timer + 500);
+            });
+        });
+    </script>
+</html>
