@@ -166,6 +166,8 @@
     <script src="/js/sound.min.js"></script>
     <script>
         const incorrect = document.querySelector(".incorrect");
+        const stage__countNum = document.querySelector(".stage__countNum");
+        let count = 0;
 
         document.addEventListener("DOMContentLoaded", function () {
             loadingComplete();
@@ -314,6 +316,8 @@
                 new Audio("/sound/sound_yea.mp3").play();
                 clear();
             } else {
+                count++;
+                stage__countNum.textContent = count;
                 new Audio("/sound/strawberry/01_Wrong.mp3").play();
                 incorrect.style.opacity = 1;
                 incorrect.style.visibility = "visible";

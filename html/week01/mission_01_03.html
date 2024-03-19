@@ -68,8 +68,8 @@
             <section class="stage__content mission_01_03 -active">
                 <h2 class="miss__tit">3. 상토 조제하기</h2>
                 <p class="miss__txt">
-                    상토를 조제하는데 중요한 기준은 묘목에게 적정한 공기를 공급<br />
-                    하고 원활한 배수를 제공하는 것입니다. 소규모 상토를 조제해보세요.
+                    상토를 조제하는데 중요한 기준은 묘목에게 적정한 공기를 공급 하고 원활한 배수를 제공하는 것입니다.<br />
+                    피트모스와 펄라이트 질석을 적당비율로 1200L의 상토를 조제해보세요.
                 </p>
                 <div class="miss-1-3__bg">
                     <div style="left: 70px; top: 5%; position: absolute; display: flex; align-items: center; gap: 56px">
@@ -339,68 +339,32 @@
         let missNum = 0;
         const stage__countNum = document.querySelector(".stage__countNum");
 
+        function showMessageAndIncreaseMissNum(message) {
+            incorrect__txt.innerHTML = message;
+            missPage.style.opacity = "1";
+            missPage.style.transform = "scale(1)";
+            missPage.style.visibility = "visible";
+            missNum++;
+            stage__countNum.innerText = missNum;
+        }
+
         function copleteCheck() {
-            console.log(san_1.innerText, san_2.innerText, san_3.innerText);
-            if (san_1.innerText < 400) {
-                incorrect__txt.innerHTML = `
-                    <span class="answer -type01">피트모스가 부족합니다.</span>
-                    다시 시도해보세요.
-                `;
-                missPage.style.opacity = "1";
-                missPage.style.transform = "scale(1)";
-                missPage.style.visibility = "visible";
-                missNum++;
-                stage__countNum.innerText = missNum;
-            } else if (san_1 > 400) {
-                incorrect__txt.innerHTML = `
-                    <span class="answer -type01">피트모스가 많습니다.</span>
-                    다시 시도해보세요.
-                `;
-                missPage.style.opacity = "1";
-                missPage.style.transform = "scale(1)";
-                missPage.style.visibility = "visible";
-                missNum++;
-                stage__countNum.innerText = missNum;
-            } else if (san_2.innerText < 400) {
-                incorrect__txt.innerHTML = `
-                    <span class="answer -type01">펄라이트가 부족합니다.</span>
-                    다시 시도해보세요.
-                `;
-                missPage.style.opacity = "1";
-                missPage.style.transform = "scale(1)";
-                missPage.style.visibility = "visible";
-                missNum++;
-                stage__countNum.innerText = missNum;
-            } else if (san_2 > 400) {
-                incorrect__txt.innerHTML = `
-                    <span class="answer -type01">펄라이트가 많습니다.</span>
-                    다시 시도해보세요.
-                `;
-                missPage.style.opacity = "1";
-                missPage.style.transform = "scale(1)";
-                missPage.style.visibility = "visible";
-                missNum++;
-                stage__countNum.innerText = missNum;
-            } else if (san_3.innerText < 400) {
-                incorrect__txt.innerHTML = `
-                    <span class="answer -type01">질석이 부족합니다.</span>
-                    다시 시도해보세요.
-                `;
-                missPage.style.opacity = "1";
-                missPage.style.transform = "scale(1)";
-                missPage.style.visibility = "visible";
-                missNum++;
-                stage__countNum.innerText = missNum;
-            } else if (san_3 > 400) {
-                incorrect__txt.innerHTML = `
-                    <span class="answer -type01">질석이 많습니다.</span>
-                    다시 시도해보세요.
-                `;
-                missPage.style.opacity = "1";
-                missPage.style.transform = "scale(1)";
-                missPage.style.visibility = "visible";
-                missNum++;
-                stage__countNum.innerText = missNum;
+            let san_1_value = parseInt(san_1.innerText);
+            let san_2_value = parseInt(san_2.innerText);
+            let san_3_value = parseInt(san_3.innerText);
+
+            if (san_1_value < 1 && san_2_value < 1 && san_3_value < 1) {
+                showMessageAndIncreaseMissNum('<span class="answer -type01">조제를 시도해보세요.</span>');
+            } else if (san_1_value < 400 && san_2_value < 400 && san_3_value < 400) {
+                showMessageAndIncreaseMissNum('<span class="answer -type01">모든 재료가 부족합니다.<br/>다시 시도해보세요.</span>');
+            } else if (san_1_value < 400 || san_2_value < 400 || san_3_value < 400) {
+                let message = san_1_value < 400 ? "피트모스가 부족합니다." : san_2_value < 400 ? "펄라이트가 부족합니다." : "질석이 부족합니다.";
+                showMessageAndIncreaseMissNum(`<span class="answer -type01">${message}</span> 다시 시도해보세요.`);
+            } else if (san_1_value > 400 && san_2_value > 400 && san_3_value > 400) {
+                showMessageAndIncreaseMissNum('<span class="answer -type01">모든 재료가 많습니다.<br/>다시 시도해보세요.</span>');
+            } else if (san_1_value > 400 || san_2_value > 400 || san_3_value > 400) {
+                let message = san_1_value > 400 ? "피트모스가 많습니다." : san_2_value > 400 ? "펄라이트가 많습니다." : "질석이 많습니다.";
+                showMessageAndIncreaseMissNum(`<span class="answer -type01">${message}</span> 다시 시도해보세요.`);
             } else {
                 new Audio("/sound/sound_yea.mp3").play();
                 clear();

@@ -16,10 +16,11 @@
         <link rel="stylesheet" href="/css/vendor/jquery-ui.all.css" />
         <style>
             .miss-1-1__box {
-                display: grid;
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+                width: auto !important;
                 gap: 2px;
-                margin-right: 360px !important;
+                display: flex;
+                justify-content: center;
+                gap: 10px;
             }
             .miss-1-1__box > div {
                 width: 100%;
@@ -145,7 +146,7 @@
             <section class="stage__content mission_01_01 -active">
                 <h2 class="miss__tit">2. 소나무 본수에 맞는 온실면적계산</h2>
                 <p class="miss__txt">
-                    소나무 2년생 용기묘를 200ha에 심으려고 할 때 전체 필요한 실제 생산 본수에 맞추어<br />비닐 온실면적을 계산해 보세요(생육밀도 m2 당 350본. 비닐온실 1동 :
+                    소나무 2년생 용기묘를 200ha에 심으려고 할 때 전체 필요한 실제 생산 본수에 맞추어<br />비닐 온실면적을 계산해 보세요(생육밀도 ㎡ 당 350본. 비닐온실 1동 :
                     생산면적 65%, 온실통로 35%)
                 </p>
                 <div class="miss-1-1__box" style="height: 400px; width: 820px">
@@ -160,7 +161,7 @@
                                 <li>÷</li>
                                 <li>
                                     <p>생육밀도</p>
-                                    <h4>350본/m2</h4>
+                                    <h4>350본/㎡</h4>
                                 </li>
                             </ul>
                             <div>
@@ -211,15 +212,15 @@
                         <div class="tipBox__txtBox">
                             <h2 class="tipBox__tit">선생님의 재배 tip</h2>
                             <p class="miss-1-1__tipTxt">
-                                생육밀도가 m2당 350본이기 때문에 소요되는 생육 밀도에 맞는 면적은,<br />
-                                660,000본 ÷ 350본 = 1,886m2가 됩니다. <br /><br />이때 면적은 온실 내 양묘 생산면적을 말하며 1,886m2가 필요하나, <br />비닐 온실 내 통로가 35%를
-                                차지하므로 생산면적 65%와<br />온실통로 35%를 포함한 전체 온실의 면적은<br />
-                                ,1,886m2 ÷0.65 = 2,902m2가 필요하게 됩니다.<br /><br />우리가 준비해야하는 비닐온실이 1동당 : 729m2이라면<br />
-                                2,902m2 ÷ 729m2 = 4로 4개 동을 준비해야합니다.
+                                생육밀도가 ㎡당 350본이기 때문에 소요되는 생육 밀도에 맞는 면적은,<br />
+                                660,000본 ÷ 350본 = 1,886㎡가 됩니다. <br /><br />이때 면적은 온실 내 양묘 생산면적을 말하며 1,886㎡가 필요하나, <br />비닐 온실 내 통로가 35%를
+                                차지하므로 생산면적 65%와<br />온실통로 35%를 포함한 전체 온실의 면적은 ,<br />1,886㎡ ÷0.65 = 2,902㎡가 필요하게 됩니다.<br /><br />우리가
+                                준비해야하는 비닐온실이 1동당 : 729㎡이라면<br />
+                                2,902㎡ ÷ 729㎡ = 4로 4개 동을 준비해야합니다.
                             </p>
                             <p class="miss-1-1__tipTxt txt2">
-                                660,000본 ÷ 350본/m2 = 1,886m2<br />
-                                1,886m2 ÷0.65 = 2,902m2
+                                660,000본 ÷ 350본/㎡ = 1,886㎡<br />
+                                1,886㎡ ÷0.65 = 2,902㎡
                             </p>
                             <button type="button" class="tipBox__close">창닫기</button>
                         </div>
@@ -232,7 +233,7 @@
                         <h2 class="success__tit"><img src="/images/miss/txt_complete.png" alt="미션성공" /></h2>
                         <p class="success__point">
                             전체 식재본수 660,000본를 키우기 위한 온실은<br />
-                            온실 통로 포함 최종 면적2,902m2 총 4개 동을 성공적으로 준비하였습니다.
+                            온실 통로 포함 최종 면적2,902㎡ 총 4개 동을 성공적으로 준비하였습니다.
                         </p>
                         <div class="success__box" style="margin-top: 40px">
                             <img src="/images/miss/success_miss_1_2.png" alt="" />
@@ -290,13 +291,13 @@
         }
 
         function completeCheck() {
-            const miss_1_2_inp01_value = parseInt(document.getElementById("miss_1_2_inp01").value, 10);
-            const miss_1_2_inp02_value = parseInt(document.getElementById("miss_1_2_inp02").value, 10);
-            const miss_1_2_inp03_value = parseInt(document.getElementById("miss_1_2_inp03").value, 10);
+            const miss_1_2_inp01_value = document.getElementById("miss_1_2_inp01").value.replace(/,/g, "");
+            const miss_1_2_inp02_value = document.getElementById("miss_1_2_inp02").value.replace(/,/g, "");
+            const miss_1_2_inp03_value = document.getElementById("miss_1_2_inp03").value.replace(/,/g, "");
             const stage__countNum = document.querySelector(".stage__countNum");
             const incorrect__txt = document.querySelector(".incorrect__txt");
 
-            if (miss_1_2_inp01_value != 1885) {
+            if (parseInt(miss_1_2_inp01_value) != 1885) {
                 missAudio.play();
                 stage__countNum.textContent = parseInt(stage__countNum.textContent, 10) + 1;
                 incorrect__txt.innerHTML = `
@@ -306,7 +307,7 @@
                 missPage.style.opacity = "1";
                 missPage.style.transform = "scale(1)";
                 missPage.style.visibility = "visible";
-            } else if (miss_1_2_inp02_value != 2902) {
+            } else if (parseInt(miss_1_2_inp02_value) != 1885) {
                 missAudio.play();
                 stage__countNum.textContent = parseInt(stage__countNum.textContent, 10) + 1;
                 incorrect__txt.innerHTML = `
@@ -316,7 +317,7 @@
                 missPage.style.opacity = "1";
                 missPage.style.transform = "scale(1)";
                 missPage.style.visibility = "visible";
-            } else if (miss_1_2_inp03_value != 4) {
+            } else if (parseInt(miss_1_2_inp03_value) != 2902) {
                 missAudio.play();
                 stage__countNum.textContent = parseInt(stage__countNum.textContent, 10) + 1;
                 incorrect__txt.innerHTML = `

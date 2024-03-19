@@ -4754,9 +4754,10 @@ body.-activeLayerPopup .stage__bg {
     left: 50%;
     transform: translateX(-50%);
     top: 269px;
-    width: 544px;
-    height: 354px;
-    background: url("/images/miss/week01/miss_1_4/bg_pan.svg") no-repeat 0 0;
+    width: 549px;
+    height: 361px;
+    background: url(/images/miss/week01/miss_1_4/bg_pan.svg) no-repeat 0 0;
+    background-size: cover;
 }
 .miss-1-4__pan.-active .iconSeed {
     transform: translateY(0) !important;
@@ -4792,6 +4793,7 @@ body.-activeLayerPopup .stage__bg {
     height: 72px;
     margin-right: 14px;
     position: relative;
+    border-radius: 50%;
 }
 /* .miss-1-4__panEvent:nth-child(5) {
     margin-right: 27px;
@@ -4808,6 +4810,7 @@ body.-activeLayerPopup .stage__bg {
     border: 3px solid transparent;
     left: -8px;
     top: -8px;
+    border-radius: 50%;
 }
 .miss-1-4__panEvent:after {
     content: "";
@@ -4815,6 +4818,7 @@ body.-activeLayerPopup .stage__bg {
     position: absolute;
     width: 84px;
     height: 73px;
+    border-radius: 50%;
     right: -55px;
     top: -73px;
     cursor: none;
