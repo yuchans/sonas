@@ -65,9 +65,10 @@
                 bottom: 45px;
                 z-index: 20;
                 width: 250px;
+                height: 68px;
             }
             #dragLine button {
-                width: 20px;
+                width: 10px;
                 height: 70px;
                 background: #ef4444;
                 border: 1px solid #000;
@@ -77,14 +78,28 @@
 
             #dragLine #leftDlag {
                 position: absolute;
-                left: -10px;
+                left: 0px;
                 bottom: 0;
+                transition: 0.1s all;
             }
 
             #dragLine #rightDlag {
                 position: absolute;
-                right: -10px;
+                right: 0px;
                 bottom: 0;
+                transition: 0.1s all;
+            }
+
+            @font-face {
+                font-family: "KyoboHand";
+                src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/KyoboHand.woff") format("woff");
+                font-weight: normal;
+                font-style: normal;
+            }
+            .imgP {
+                font-family: "KyoboHand";
+                margin: 24px 0 0 26px;
+                font-size: 20px;
             }
         </style>
     </head>
@@ -122,6 +137,7 @@
 
                 <div class="wrap_14">
                     <div id="tree">
+                        <p class="imgP">소나무 두께: 10cm</p>
                         <img src="/images/pinetree/tree_15.svg" alt="" style="user-select: none" />
 
                         <div id="dragPointer"></div>
@@ -177,7 +193,7 @@
                         <h2 class="success__tit"><img src="/images/pinetree/txt_complete.png" alt="미션성공" /></h2>
                         <p class="success__point">벌채 후 소나무 그루터기</p>
                         <div class="success__box" style="width: 670px; margin: 34px auto">
-                            <img src="/images/pinetree/success_miss_1_14.png" alt="" style="width: 100%; background: #fff; padding: 10px" />
+                            <img src="/images/pinetree/success_miss_1_14.png" alt="" style="width: 100%; background: #fff; padding: 10px; border-radius: 20px" />
                         </div>
 
                         <a href="/html/ctvtsmlt/lobby.html" class="btnMain" style="left: 42%"></a>
@@ -218,35 +234,84 @@
     <script src="/js/miss.min.js"></script>
     <script src="/js/sound.min.js"></script>
     <script>
-        var challengeCount = 0; // 도전횟수
         document.addEventListener("DOMContentLoaded", function () {
             loadingComplete();
-        });
 
-        const incorrect = document.querySelector(".incorrect");
-        const stage__countNum = document.querySelector(".stage__countNum");
-        let nums = 0;
+            var leftDlag = document.getElementById("leftDlag");
+            var rightDlag = document.getElementById("rightDlag");
+            var tree = document.getElementById("tree");
+            var dragLine = document.getElementById("dragLine");
+            var inputField = document.getElementById("miss_1_2_inp02");
 
-        function completeCheck() {
-            const miss_1_2_inp02 = document.getElementById("miss_1_2_inp02");
+            var startX = 0; // 드래그 시작 시 마우스 X 위치
 
-            //miss_1_2_inp02 값이 30 ~ 60 사이일 때 성공하게 하기
-            if (miss_1_2_inp02.value >= 30 && miss_1_2_inp02.value <= 60) {
-                new Audio("/sound/sound_yea.mp3").play();
-                clear();
-            } else {
-                stage__countNum.textContent = ++nums;
-                new Audio("/sound/strawberry/01_Wrong.mp3").play();
-                incorrect.style.opacity = 1;
-                incorrect.style.visibility = "visible";
-                incorrect.style.transform = "scale(1)";
+            leftDlag.addEventListener("mousedown", function (e) {
+                e.preventDefault();
+                startX = e.clientX; // 드래그 시작 시 마우스 X 위치 저장
+                document.addEventListener("mousemove", onMouseMove);
+                document.addEventListener("mouseup", onMouseUp);
+            });
+
+            function onMouseMove(e) {
+                var offsetX = e.clientX - startX; // 이동한 거리 계산
+                var currentX = parseInt(leftDlag.style.left) || 0; // 현재 left 값 가져오기
+                var newX = Math.min(Math.max(currentX + offsetX, 0), 180); // 새로운 left 값 계산 (최대 90까지)
+
+                // 오른쪽 버튼 위치와 간격 계산
+                var rightPosition = parseInt(rightDlag.style.right) || 0;
+                var maxLeft = 90 - rightPosition;
+                newX = Math.min(newX, maxLeft);
+
+                leftDlag.style.left = newX + "px";
+                startX += newX - currentX; // startX 값 업데이트
+
+                updateInputField();
             }
-        }
 
-        function missClose() {
-            incorrect.style.opacity = 0;
-            incorrect.style.visibility = "hidden";
-            incorrect.style.transform = "scale(0.0)";
-        }
+            function onMouseUp() {
+                document.removeEventListener("mousemove", onMouseMove);
+                document.removeEventListener("mouseup", onMouseUp);
+            }
+
+            rightDlag.addEventListener("mousedown", function (e) {
+                e.preventDefault();
+                startX = e.clientX; // 드래그 시작 시 마우스 X 위치 저장
+                document.addEventListener("mousemove", onMouseMoveRight);
+                document.addEventListener("mouseup", onMouseUpRight);
+            });
+
+            function onMouseMoveRight(e) {
+                var offsetX = startX - e.clientX; // 이동한 거리 계산
+                var currentRight = parseInt(rightDlag.style.right) || 0; // 현재 right 값 가져오기
+                var newRight = Math.min(Math.max(currentRight + offsetX, 0), 180); // 새로운 right 값 계산 (최대 90까지)
+
+                // 왼쪽 버튼 위치와 간격 계산
+                var leftPosition = parseInt(leftDlag.style.left) || 0;
+                var maxRight = 90 - leftPosition;
+                newRight = Math.min(newRight, maxRight);
+
+                rightDlag.style.right = newRight + "px";
+                startX = e.clientX; // 다음 이동을 위해 startX 업데이트
+
+                updateInputField();
+            }
+
+            function onMouseUpRight() {
+                document.removeEventListener("mousemove", onMouseMoveRight);
+                document.removeEventListener("mouseup", onMouseUpRight);
+            }
+
+            // 입력 필드 업데이트 함수
+            function updateInputField() {
+                var leftPosition = parseInt(leftDlag.style.left) || 0;
+                var rightPosition = parseInt(rightDlag.style.right) || 0;
+                var distance = 90 - (leftPosition + rightPosition);
+
+                // distance가 음수이면 0으로 설정
+                distance = distance >= 0 ? distance : 0;
+
+                inputField.value = distance; // 입력 필드에 값을 설정
+            }
+        });
     </script>
 </html>

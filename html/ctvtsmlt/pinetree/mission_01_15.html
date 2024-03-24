@@ -60,15 +60,15 @@
             }
             #dragLine {
                 position: absolute;
-                left: 57%;
-                transform: translateX(-57%);
-                bottom: 45px;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
                 z-index: 20;
-                width: 250px;
+                width: 100%;
                 height: 68px;
             }
             #dragLine button {
-                width: 20px;
+                width: 10px;
                 height: 70px;
                 background: #ef4444;
                 border: 1px solid #000;
@@ -80,14 +80,12 @@
                 position: absolute;
                 left: 0px;
                 bottom: 0;
-                transition: 0.1s all;
             }
 
             #dragLine #rightDlag {
                 position: absolute;
                 right: 0px;
                 bottom: 0;
-                transition: 0.1s all;
             }
 
             @font-face {
@@ -100,6 +98,19 @@
                 font-family: "KyoboHand";
                 margin: 24px 0 0 26px;
                 font-size: 20px;
+            }
+
+            .miss-1-1__tipTxt h3 {
+                font-size: 22px;
+                line-height: 32px;
+                font-weight: bold;
+                font-family: jalnan;
+                margin-bottom: 4px;
+            }
+
+            .miss-1-1__tipTxt p {
+                font-size: 18px;
+                line-height: 26px;
             }
         </style>
     </head>
@@ -140,12 +151,12 @@
                         <p class="imgP">소나무 두께: 10cm</p>
                         <img src="/images/pinetree/tree_15.svg" alt="" style="user-select: none" />
 
-                        <div id="dragPointer"></div>
-
-                        <div id="dragLine">
-                            <button id="leftDlag"></button>
-                            <div></div>
-                            <button id="rightDlag"></button>
+                        <div id="dragPointer">
+                            <div id="dragLine">
+                                <button id="leftDlag"></button>
+                                <div></div>
+                                <button id="rightDlag"></button>
+                            </div>
                         </div>
                     </div>
                     <div style="position: absolute; right: 176px; top: 500px">
@@ -155,7 +166,7 @@
                 </div>
 
                 <div class="btnGroup">
-                    <a href="#this" class="btn -complete" onclick="completeCheck()">완료</a>
+                    <a href="#this" class="btn -complete" style="margin-left: 0" onclick="completeCheck()">완료</a>
                 </div>
                 <!--미션1-1 도움말 -->
                 <aside class="tipBox miss-1-1">
@@ -164,23 +175,56 @@
                             <span class="tipBox__tecStar"></span>
                             <span class="tipBox__starLine"></span>
                         </div>
-                        <div class="tipBox__txtBox">
+                        <div class="tipBox__txtBox" style="overflow-y: auto">
                             <h2 class="tipBox__tit">선생님의 재배 tip</h2>
                             <p class="miss-1-1__tipTxt" style="font-size: 22px">
-                                벌목의 위치를 보통 벌채점이라고 하는데,
-                                <strong style="text-decoration: underline; color: #ee4344"> 보통 지면에서 20∼30㎝ 정도의 높이에서 벌채</strong>하며,<br />
-                                가능하면 벌목 후의 집재를 고려하여 그루터기를 낮게 하는 것이 좋습니다.
+                                나무를 살릴 수 있는 것은 모세근(毛細根), 즉 잔뿌리입니다. 잔뿌리를 많이 가져올 수 있도록<br />
+                                가늠한 후 채취를 해야합니다. 특히 송백류는 잔뿌리가 작으면 살리기가 어려우므로 채취할 때<br />
+                                <strong style="text-decoration: underline; color: #ee4344"> 잔뿌리를 보호하기 위하여 나무 두께보다 3-6배정도 넓게 채취</strong>해야 합니다.
                             </p>
                             <p class="miss-1-1__tipTxt" style="font-size: 22px">
-                                벌목에 있어서 수형, 인접목, 지형, 하층 식생, 풍향, 풍속, 벌목 후의 작업 등을 고려하여 <br />수간을 손상시키지 않는 안전한 방향으로 벌도하는 것이
-                                중요합니다. 급경사지의 벌도 방향과 <br />목재의 손상 정도는 상향 벌도가 가장 적고 측방 벌도, 하향 벌도의 순입니다.
+                                또한 가지가 단정하게 묶이지 않고 넓을 경우에는 운반하는 과정에서 힘이 많이 들고,<br />
+                                가지나 뿌리가 더욱 다치기 쉽습니다. 필요하지 않은 가지와 뿌리는 조금의 여유만 남기고 <br />자른 후 뿌리와 가지까지 큰 마대에 담아 부드러운 고무줄
+                                등으로 묶어 <br />간편하게 하는 것이 옮겨오는데에 용이합니다.
                             </p>
-                            <p class="miss-1-1__tipTxt" style="font-size: 22px">
-                                일반적으로 경사지에서의 벌도 방향은 임지의 경사 방향에 대하여 가로 방향 또는<br />약 30° 경사진 방향이 적합합니다. 또 벌목 후의 조재 작업과 집재
-                                작업의 상황에 따라<br />
-                                벌도 방향을 정할 필요가 있습니다. 벌도 방향이 정해지면 벌도 대상의 주위를 정리하여 <br />작업을 원활하게 할 수 있도록 하며, 대피로를 결정해 두어야
-                                합니다.
-                            </p>
+
+                            <div>
+                                <img src="/images/pinetree/tip16.png" alt="" style="width: 100%; padding: 0 54px" />
+                            </div>
+
+                            <ul class="miss-1-1__tipTxt" style="font-size: 22px; display: flex; flex-direction: column; gap: 22px">
+                                <li>
+                                    <h3>1. 굴취할 수목을 선정한다.</h3>
+                                </li>
+                                <li>
+                                    <h3>2. 굴취 중 수목이 쓰러지지 않도록 고정 로프를 설치한다.</h3>
+                                </li>
+                                <li>
+                                    <h3>3. 분파기용 포크레인(6W)을 이용하고, 작업 중 수목의 굴은 뿌리가 나오면 톱이나 가위로 절단하여 제거한다.</h3>
+                                </li>
+                                <li>
+                                    <h3>4. 분 다듬기 작업 중 작은 뿌리는 톱이나 가위로 절단한다.</h3>
+                                </li>
+                                <li>
+                                    <h3>
+                                        5. 분감기는 먼저 녹화 마대를 두른 후, 코아 로프, 고무줄, 반생 철사(구운 철사)의 순서로 분을 단단히 결박한다. 고무줄은 이식작업시 제거한다.
+                                    </h3>
+                                </li>
+                                <li>
+                                    <h3>6. 분감기 완료 후, 고정 로프를 제거하고 수목을 서서히 눕히면서 분의 밑부분에 직근이 있는 경우 톱으로 절단한다.</h3>
+                                </li>
+                                <li>
+                                    <h3>
+                                        7. 장비의 후크에 바의 고리를 걸 때, 윗바(줄기를 묶은 바)를 먼저 걸고 나중에 밑바(분을 묶은 바)를 걸어 작업 중 고리가 빠지지 않도록 한다.
+                                    </h3>
+                                </li>
+                                <li>
+                                    <h3>8. 상차는 먼저 수목의 분을 적재함에 올려 고임목으로 고정한 후, 수관을 내려놓고 전정(가지치기)를 한다.</h3>
+                                </li>
+                                <li>
+                                    <h3>9. 수관 받침대 위에 대목을 고정하고, 수목을 차량에 단단히 고정한 후 이동한다.</h3>
+                                </li>
+                            </ul>
 
                             <button type="button" class="tipBox__close">창닫기</button>
                         </div>
@@ -191,9 +235,9 @@
                 <aside class="success miss-1-1">
                     <div class="success__inner">
                         <h2 class="success__tit"><img src="/images/pinetree/txt_complete.png" alt="미션성공" /></h2>
-                        <p class="success__point">벌채 후 소나무 그루터기</p>
-                        <div class="success__box" style="width: 670px; margin: 34px auto">
-                            <img src="/images/pinetree/success_miss_1_14.png" alt="" style="width: 100%; background: #fff; padding: 10px; border-radius: 20px" />
+                        <p class="success__point">소나무 이식준비 완료</p>
+                        <div class="success__box" style="width: 440px; margin: 34px auto">
+                            <img src="/images/pinetree/se_15.png" alt="" style="width: 100%; background: #fff; padding: 10px; border-radius: 20px" />
                         </div>
 
                         <a href="/html/ctvtsmlt/lobby.html" class="btnMain" style="left: 42%"></a>
@@ -209,7 +253,7 @@
                         <button type="button" class="incorrect__handBox">
                             <span class="incorrect__handImg"></span>
                             <p class="incorrect__txt">
-                                벌채점 높이가 올바르지 않습니다.
+                                채취 넓이가 올바르지 않습니다.
                                 <br />
                                 확인 후 다시 시도해 주세요
                             </p>
@@ -234,18 +278,14 @@
     <script src="/js/miss.min.js"></script>
     <script src="/js/sound.min.js"></script>
     <script>
+        var inputField = document.getElementById("miss_1_2_inp02");
         document.addEventListener("DOMContentLoaded", function () {
-            loadingComplete();
-
-            var leftDlag = document.getElementById("leftDlag");
-            var rightDlag = document.getElementById("rightDlag");
-            var tree = document.getElementById("tree");
-            var dragLine = document.getElementById("dragLine");
-            var inputField = document.getElementById("miss_1_2_inp02");
+            var dragPointer = document.getElementById("dragPointer");
 
             var startX = 0; // 드래그 시작 시 마우스 X 위치
+            var startWidth = 240; // 초기 가로폭
 
-            leftDlag.addEventListener("mousedown", function (e) {
+            dragPointer.addEventListener("mousedown", function (e) {
                 e.preventDefault();
                 startX = e.clientX; // 드래그 시작 시 마우스 X 위치 저장
                 document.addEventListener("mousemove", onMouseMove);
@@ -254,18 +294,11 @@
 
             function onMouseMove(e) {
                 var offsetX = e.clientX - startX; // 이동한 거리 계산
-                var currentX = parseInt(leftDlag.style.left) || 0; // 현재 left 값 가져오기
-                var newX = Math.min(Math.max(currentX + offsetX, 0), 180); // 새로운 left 값 계산 (최대 90까지)
+                var newWidth = Math.max(startWidth + offsetX, startWidth); // 새로운 가로폭 계산 (startWidth보다 작아지지 않도록)
 
-                // 오른쪽 버튼 위치와 간격 계산
-                var rightPosition = parseInt(rightDlag.style.right) || 0;
-                var maxLeft = 90 - rightPosition;
-                newX = Math.min(newX, maxLeft);
+                dragPointer.style.width = newWidth + "px"; // 가로폭 설정
 
-                leftDlag.style.left = newX + "px";
-                startX += newX - currentX; // startX 값 업데이트
-
-                updateInputField();
+                updateInputField(offsetX);
             }
 
             function onMouseUp() {
@@ -273,45 +306,37 @@
                 document.removeEventListener("mouseup", onMouseUp);
             }
 
-            rightDlag.addEventListener("mousedown", function (e) {
-                e.preventDefault();
-                startX = e.clientX; // 드래그 시작 시 마우스 X 위치 저장
-                document.addEventListener("mousemove", onMouseMoveRight);
-                document.addEventListener("mouseup", onMouseUpRight);
-            });
-
-            function onMouseMoveRight(e) {
-                var offsetX = startX - e.clientX; // 이동한 거리 계산
-                var currentRight = parseInt(rightDlag.style.right) || 0; // 현재 right 값 가져오기
-                var newRight = Math.min(Math.max(currentRight + offsetX, 0), 180); // 새로운 right 값 계산 (최대 90까지)
-
-                // 왼쪽 버튼 위치와 간격 계산
-                var leftPosition = parseInt(leftDlag.style.left) || 0;
-                var maxRight = 90 - leftPosition;
-                newRight = Math.min(newRight, maxRight);
-
-                rightDlag.style.right = newRight + "px";
-                startX = e.clientX; // 다음 이동을 위해 startX 업데이트
-
-                updateInputField();
-            }
-
-            function onMouseUpRight() {
-                document.removeEventListener("mousemove", onMouseMoveRight);
-                document.removeEventListener("mouseup", onMouseUpRight);
-            }
-
             // 입력 필드 업데이트 함수
-            function updateInputField() {
-                var leftPosition = parseInt(leftDlag.style.left) || 0;
-                var rightPosition = parseInt(rightDlag.style.right) || 0;
-                var distance = 90 - (leftPosition + rightPosition);
+            function updateInputField(offsetX) {
+                var distance = Math.max(offsetX / 2, 0); // 드래그 위치에 따른 거리 계산 (0보다 작아지지 않도록)
 
-                // distance가 음수이면 0으로 설정
-                distance = distance >= 0 ? distance : 0;
-
-                inputField.value = distance; // 입력 필드에 값을 설정
+                inputField.value = Math.round(distance); // 입력 필드에 값을 설정
             }
         });
+
+        const incorrect = document.querySelector(".incorrect");
+        const stage__countNum = document.querySelector(".stage__countNum");
+        let nums = 0;
+
+        function completeCheck() {
+            var distance = inputField.value;
+
+            if (distance >= 30 && distance <= 60) {
+                new Audio("/sound/sound_yea.mp3").play();
+                clear();
+            } else {
+                stage__countNum.textContent = ++nums;
+                new Audio("/sound/strawberry/01_Wrong.mp3").play();
+                incorrect.style.opacity = 1;
+                incorrect.style.visibility = "visible";
+                incorrect.style.transform = "scale(1)";
+            }
+        }
+
+        function missClose() {
+            incorrect.style.opacity = 0;
+            incorrect.style.visibility = "hidden";
+            incorrect.style.transform = "scale(0.0)";
+        }
     </script>
 </html>
