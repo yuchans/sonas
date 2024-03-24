@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <title>소나무 수형잡기 | 재배 시뮬레이션 스마트팜</title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=1445, initial-scale=1.0" />
+        <link rel="apple-touch-icon" href="icon.png" />
+        <!-- Place favicon.ico in the root directory -->
+        <link rel="stylesheet" href="/css/vendor/normalize.css" />
+        <link rel="stylesheet" href="/css/vendor/font-awesome/css/font-awesome.min.css" />
+        <script src="/js/vendor/jquery-1.12.0.min.js"></script>
+        <script src="/js/vendor/t.min.js"></script>
+        <link rel="stylesheet" href="/css/ctvtsmlt/pinetree/week_1_style.css" />
+        <link rel="stylesheet" href="/css/vendor/jquery-ui.all.css" />
+        <style>
+            .miss-1-1__tipTxt {
+                text-align: left;
+                margin-bottom: 34px !important;
+            }
+            .success__point {
+                font-size: 32px;
+            }
+            #dragPointer {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 24px;
+                background: rgba(220, 38, 38, 0.8);
+                border: 4px solid #000;
+                cursor: pointer;
+                z-index: 100;
+                border-radius: 100px;
+                transition: border 0.3s ease-in-out;
+            }
+
+            #dragPointer:hover {
+                border: 4px solid #fff;
+            }
+        </style>
+    </head>
+    <body>
+        <article role="main" class="stage week-1 miss-1-1">
+            <div class="stage__bg"></div>
+            <div class="stage__top">
+                <h1 class="stage__tit">소나무 벌채</h1>
+                <a href="/html/ctvtsmlt/lobby.html" class="stage__exit">나가기</a>
+            </div>
+            <input type="checkbox" id="chkFx" checked="checked" />
+            <div class="tip">
+                <button type="button" class="tipBtn">선생님팁</button>
+                <div class="tip__star">
+                    <div class="iconStar"></div>
+                    <small class="iconStar"></small>
+                    <div class="tip__line">
+                        <img src="/images/pinetree/bg_tip_line.png" alt="" class="tip__lineImg" />
+                    </div>
+                </div>
+            </div>
+            <div class="stage__count">
+                <p class="stage__countTit">미션 도전횟수</p>
+                <p class="stage__countNum">0</p>
+            </div>
+
+            <!--미션1-1-->
+            <section class="stage__content mission_01_01 -active">
+                <h2 class="miss__tit">벌목의 위치(벌채점)</h2>
+                <p class="miss__txt">소내무를 벌채할 때 벌목후의 집재를 고려하여 벌채점을 지정해야 하는데,<br />붉은색 바를 아래위로 움직여 올바른 벌채점을 지정해 주세요</p>
+
+                <div class="wrap_14">
+                    <div
+                        id="tree"
+                        style="width: 360px; margin: 50px auto; position: relative; background: #fff; padding: 20px 100px; border: 4px solid rgb(0, 0, 0); border-radius: 30px"
+                    >
+                        <img src="/images/pinetree/tree_14.svg" alt="" style="width: 100%" />
+
+                        <div id="dragPointer"></div>
+                    </div>
+                    <div style="position: absolute; right: 280px; top: 500px">
+                        <input type="text" class="miss-1-2__inp" id="miss_1_2_inp02" value="0" readonly />
+                        <label for="miss_1_2_inp02" class="miss-1-2__label">cm</label>
+                    </div>
+                </div>
+
+                <div class="btnGroup">
+                    <a href="#this" class="btn -complete" onclick="completeCheck()">완료</a>
+                </div>
+                <!--미션1-1 도움말 -->
+                <aside class="tipBox miss-1-1">
+                    <div class="tipBox__inner">
+                        <div class="tipBox__tec">
+                            <span class="tipBox__tecStar"></span>
+                            <span class="tipBox__starLine"></span>
+                        </div>
+                        <div class="tipBox__txtBox">
+                            <h2 class="tipBox__tit">선생님의 재배 tip</h2>
+                            <p class="miss-1-1__tipTxt" style="font-size: 22px">
+                                벌목의 위치를 보통 벌채점이라고 하는데,
+                                <strong style="text-decoration: underline; color: #ee4344"> 보통 지면에서 20∼30㎝ 정도의 높이에서 벌채</strong>하며,<br />
+                                가능하면 벌목 후의 집재를 고려하여 그루터기를 낮게 하는 것이 좋습니다.
+                            </p>
+                            <p class="miss-1-1__tipTxt" style="font-size: 22px">
+                                벌목에 있어서 수형, 인접목, 지형, 하층 식생, 풍향, 풍속, 벌목 후의 작업 등을 고려하여 <br />수간을 손상시키지 않는 안전한 방향으로 벌도하는 것이
+                                중요합니다. 급경사지의 벌도 방향과 <br />목재의 손상 정도는 상향 벌도가 가장 적고 측방 벌도, 하향 벌도의 순입니다.
+                            </p>
+                            <p class="miss-1-1__tipTxt" style="font-size: 22px">
+                                일반적으로 경사지에서의 벌도 방향은 임지의 경사 방향에 대하여 가로 방향 또는<br />약 30° 경사진 방향이 적합합니다. 또 벌목 후의 조재 작업과 집재
+                                작업의 상황에 따라<br />
+                                벌도 방향을 정할 필요가 있습니다. 벌도 방향이 정해지면 벌도 대상의 주위를 정리하여 <br />작업을 원활하게 할 수 있도록 하며, 대피로를 결정해 두어야
+                                합니다.
+                            </p>
+
+                            <button type="button" class="tipBox__close">창닫기</button>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- 미션 성공 -->
+                <aside class="success miss-1-1">
+                    <div class="success__inner">
+                        <h2 class="success__tit"><img src="/images/pinetree/txt_complete.png" alt="미션성공" /></h2>
+                        <p class="success__point">벌채 후 소나무 그루터기</p>
+                        <div class="success__box" style="width: 670px; margin: 34px auto">
+                            <img src="/images/pinetree/success_miss_1_14.png" alt="" style="width: 100%; background: #fff; padding: 10px; border-radius: 20px" />
+                        </div>
+
+                        <a href="/html/ctvtsmlt/lobby.html" class="btnMain" style="left: 42%"></a>
+                        <a href="/html/ctvtsmlt/pinetree/mission_01_15.html" class="btnNext" style="left: 58%">
+                            <img src="/images/sprite/nextBtn.png" alt="" />
+                        </a>
+                    </div>
+                </aside>
+
+                <!-- 틀림답 -->
+                <aside onclick="missClose()" class="incorrect miss-1-1">
+                    <div class="incorrect__inner">
+                        <button type="button" class="incorrect__handBox">
+                            <span class="incorrect__handImg"></span>
+                            <p class="incorrect__txt">
+                                벌채점 높이가 올바르지 않습니다.
+                                <br />
+                                확인 후 다시 시도해 주세요
+                            </p>
+                        </button>
+                    </div>
+                </aside>
+            </section>
+            <!-- //미션 1-1 -->
+        </article>
+    </body>
+    <script src="/js/vendor/jquery.ui.datapicker.min.js"></script>
+    <script src="/js/vendor/waypoints.min.js"></script>
+    <script src="/js/vendor/datepicker-ko.js"></script>
+    <script src="/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="/js/vendor/jquery.easing.1.3.js"></script>
+    <script src="/js/vendor/slick.min.js"></script>
+    <script src="/js/vendor/jquery.counterup.min.js"></script>
+    <script src="/js/ui.js"></script>
+
+    <script src="/js/vendor/jquery.confetti.js"></script>
+    <script src="/js/vendor/jquery-ui.js"></script>
+    <script src="/js/miss.min.js"></script>
+    <script src="/js/sound.min.js"></script>
+    <script>
+        var challengeCount = 0; // 도전횟수
+        var initialPosition;
+
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("miss_1_2_inp02").value = 0; // 초기 값 설정
+            dragPointer.style.top = "340px";
+            loadingComplete();
+        });
+
+        const dragPointer = document.getElementById("dragPointer");
+
+        dragPointer.addEventListener("mousedown", function (e) {
+            const dragPointer = document.getElementById("dragPointer");
+            initialPosition = parseFloat(dragPointer.style.top) || 0; // 현재 위치를 가져옴
+            let startY = e.clientY; // 클릭한 지점의 Y 좌표를 저장
+
+            document.addEventListener("mousemove", drag);
+
+            document.addEventListener("mouseup", function () {
+                document.removeEventListener("mousemove", drag); // 이벤트 리스너 제거
+                updateValue();
+            });
+
+            function drag(e) {
+                let diffY = e.clientY - startY; // 이동한 거리 계산
+                let top = initialPosition + diffY; // 새로운 top 값 계산
+
+                if (top < 0) {
+                    top = 0;
+                } else if (top > 424) {
+                    top = 424;
+                }
+
+                dragPointer.style.top = top + "px"; // dragPointer 위치 설정
+            }
+
+            function updateValue() {
+                let percent = (424 - parseFloat(dragPointer.style.top)) / 424; // 백분율 계산
+                let value = Math.round(percent * 100); // 입력 필드에 표시될 값 계산
+                document.getElementById("miss_1_2_inp02").value = value; // 입력 필드에 값 설정
+            }
+        });
+
+        const incorrect = document.querySelector(".incorrect");
+        const stage__countNum = document.querySelector(".stage__countNum");
+        let nums = 0;
+
+        function completeCheck() {
+            const miss_1_2_inp02 = document.getElementById("miss_1_2_inp02");
+            if (miss_1_2_inp02.value >= 20 && miss_1_2_inp02.value <= 30) {
+                new Audio("/sound/sound_yea.mp3").play();
+                clear();
+            } else {
+                stage__countNum.textContent = ++nums;
+                new Audio("/sound/strawberry/01_Wrong.mp3").play();
+                incorrect.style.opacity = 1;
+                incorrect.style.visibility = "visible";
+                incorrect.style.transform = "scale(1)";
+            }
+        }
+
+        function missClose() {
+            incorrect.style.opacity = 0;
+            incorrect.style.visibility = "hidden";
+            incorrect.style.transform = "scale(0.0)";
+        }
+    </script>
+</html>

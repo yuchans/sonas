@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
-        <title>| 재배 시뮬레이션 스마트팜</title>
+        <title>1주차 | 재배 시뮬레이션 스마트팜</title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=1445, initial-scale=1.0" />
         <link rel="apple-touch-icon" href="icon.png" />
@@ -37,9 +37,7 @@
         </aside>
 
         <!-- //loading -->
-        <iframe src="/html/ctvtsmlt/lobby.html" frameborder="0" id="iframe"></iframe>
-        <input type="checkbox" id="chkBgm" hidden checked="checked" />
-        <input type="checkbox" id="chkFx" hidden checked="checked" />
+        <iframe src="/html/ctvtsmlt/week01/mission_01_01.html" frameborder="0" id="iframe"></iframe>
     </body>
     <script src="/js/vendor/jquery.ui.datapicker.min.js"></script>
     <script src="/js/vendor/waypoints.min.js"></script>
@@ -52,10 +50,10 @@
 
     <script src="/js/miss.min.js"></script>
     <script src="/js/sound.min.js"></script>
-    <script src="/js/vendor/detect-zoom.min.js"></script>
     <script>
         $(document).ready(function () {
             var challengeCount = 0; //도전횟수
+
             //시작될때 스크립트 이행
             $(window).load(function () {
                 var timer = 500;
@@ -66,28 +64,7 @@
                 setTimeout(function () {
                     $(".loading").addClass("-slideUp");
                 }, timer + 500);
-                //샘플
-                chkZoom();
             });
-        });
-
-        var docV = document.documentElement;
-        function closeScreen() {
-            if (docV.webkitExitFullscreen) {
-                document.webkitExitFullscreen();
-            }
-            console.log("!!");
-        }
-        $(window).resize(function () {
-            if (this.resizeTO) {
-                clearTimeout(this.resizeTO);
-            }
-            this.resizeTO = setTimeout(function () {
-                $(this).trigger("resizeEnd");
-            }, 500);
-        });
-        $(window).on("resizeEnd", function () {
-            window.resizeTo(1465, 850);
         });
     </script>
 </html>

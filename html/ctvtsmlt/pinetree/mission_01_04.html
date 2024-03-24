@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <title>1주차 | 재배 시뮬레이션 스마트팜</title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=1445, initial-scale=1.0" />
+        <link rel="apple-touch-icon" href="icon.png" />
+        <!-- Place favicon.ico in the root directory -->
+        <link rel="stylesheet" href="/css/vendor/normalize.css" />
+        <link rel="stylesheet" href="/css/vendor/font-awesome/css/font-awesome.min.css" />
+        <script src="/js/vendor/jquery-1.12.0.min.js"></script>
+        <script src="/js/vendor/t.min.js"></script>
+        <link rel="stylesheet" href="/css/ctvtsmlt/pinetree/week_1_style.css" />
+        <link rel="stylesheet" href="/css/vendor/jquery-ui.all.css" />
+        <style>
+            .iconSeed {
+                width: 24px;
+                height: 51px;
+                background-position: -40px -144px;
+            }
+            .miss-1-4__panEvent.-type06 .iconSeed {
+                left: 0;
+                top: 0;
+            }
+            /* background-position: -28px -160px; dd */
+            .miss-1-4__panEvent.-type07 .iconSeed:after,
+            .miss-1-4__panEvent.-type03 .iconSeed:after,
+            .miss-1-4__panEvent.-type01 .iconSeed:after {
+                display: none;
+            }
+            .iconSeed_2 {
+                width: 34px;
+                height: 66px;
+                background-position: -71px -129px;
+            }
+            .miss-1-4__panEvent:before,
+            .miss-1-4__panEvent {
+                border-radius: 0;
+            }
+            .miss-1-4__zoom {
+                left: calc(50% + 350px);
+            }
+            .zong {
+                position: relative;
+                width: 480px;
+                margin: 70px auto 0;
+                background: #fff;
+                padding: 40px;
+                border: 4px solid #000;
+                border-radius: 20px;
+            }
+            .zong img {
+                width: 100%;
+            }
+            .section button {
+                position: relative;
+            }
+            .section button:after {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 84px;
+                height: 73px;
+                right: -55px;
+                top: -73px;
+                cursor: none;
+                pointer-events: none;
+                transition: opacity 1s 2s;
+                opacity: 1;
+            }
+            .section button.correctAnswer:before {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 42px;
+                height: 42px;
+                border: 3px solid transparent;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                border-radius: 50%;
+            }
+            .section button.correctAnswer::before {
+                border-color: #94be16;
+            }
+            .section button.correctAnswer::after {
+                background: url(/images/pinetree/week01/miss_1_4/img_good.png) no-repeat 0 0;
+                opacity: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <article role="main" class="stage week-1 miss-1-1">
+            <div class="stage__bg"></div>
+            <div class="stage__top">
+                <h1 class="stage__tit">시설양묘 1년차</h1>
+                <a href="/html/ctvtsmlt/lobby.html" class="stage__exit">나가기</a>
+            </div>
+            <input type="checkbox" id="chkFx" checked="checked" />
+            <div class="tip">
+                <button type="button" class="tipBtn">선생님팁</button>
+                <div class="tip__star">
+                    <div class="iconStar"></div>
+                    <small class="iconStar"></small>
+                    <div class="tip__line">
+                        <img src="/images/pinetree/bg_tip_line.png" alt="" class="tip__lineImg" />
+                    </div>
+                </div>
+            </div>
+            <div class="stage__count">
+                <p class="stage__countTit">미션 도전횟수</p>
+                <p class="stage__countNum">0</p>
+            </div>
+
+            <!--컨텐츠 시작 -->
+            <section class="stage__content mission_01_04 -active">
+                <h2 class="miss-1-1__tit">4. 종자 정선</h2>
+                <p class="miss__txt">
+                    시설양묘 과정에서 종자정선은 파종 직전에 실시하여 종자 발아 촉진을 겸하여 실행합니다.<br />
+                    알맞게 발아 정선 된 종자를 클릭하여 골라볼까요?
+                </p>
+
+                <div class="zong">
+                    <img src="/images/pinetree/th.png" alt="" />
+
+                    <section class="section">
+                        <button onclick="pinCheck(this,0)" style="width: 60px; height: 33px; position: absolute; bottom: 46px; left: 70px">
+                            <img src="/images/pinetree/th_1.png" alt="" />
+                        </button>
+                        <button onclick="pinCheck(this,1)" style="width: 45px; height: 48px; position: absolute; bottom: 50px; left: 140px">
+                            <img src="/images/pinetree/th_2.png" alt="" />
+                        </button>
+                        <button onclick="pinCheck(this,2)" style="width: 60px; height: 33px; position: absolute; bottom: 44px; left: 192px">
+                            <img src="/images/pinetree/th_3.png" alt="" />
+                        </button>
+                        <button onclick="pinCheck(this,3)" style="width: 60px; height: 33px; position: absolute; bottom: 45px; left: 259px">
+                            <img src="/images/pinetree/th_4.png" alt="" />
+                        </button>
+                        <button onclick="pinCheck(this,4)" style="width: 45px; height: 43px; position: absolute; bottom: 50px; left: 320px">
+                            <img src="/images/pinetree/th_5.png" alt="" />
+                        </button>
+                        <button onclick="pinCheck(this,5)" style="width: 60px; height: 33px; position: absolute; bottom: 45px; left: 365px">
+                            <img src="/images/pinetree/th_6.png" alt="" />
+                        </button>
+                    </section>
+
+                    <button onclick="pinCheck(this,6)" style="width: 41px; height: 51px; position: absolute; bottom: 207px; left: 99px"></button>
+                    <button onclick="pinCheck(this,7)" style="width: 36px; height: 51px; position: absolute; bottom: 186px; left: 140px"></button>
+                    <button onclick="pinCheck(this,8)" style="width: 41px; height: 51px; position: absolute; bottom: 227px; left: 179px"></button>
+                    <button onclick="pinCheck(this,9)" style="width: 41px; height: 51px; position: absolute; bottom: 207px; left: 306px"></button>
+                </div>
+
+                <div class="miss-1-4__zoom">
+                    <span class="miss-1-4__zoomCount">0</span>
+                    <span class="miss-1-4__zoomTotal">6</span>
+                </div>
+
+                <div class="btnGroup" style="display: none">
+                    <a href="javascript:;" class="btn -complete" onclick="completeCheck()">완료</a>
+                </div>
+
+                <!--미션1-4 tip -->
+                <aside class="tipBox miss-1-2">
+                    <div class="tipBox__inner">
+                        <div class="tipBox__tec">
+                            <span class="tipBox__tecStar"></span>
+                            <span class="tipBox__starLine"></span>
+                        </div>
+                        <div class="tipBox__txtBox">
+                            <h2 class="tipBox__tit">선생님의 재배 tip</h2>
+                            <p class="miss-1-1__tipTxt" style="margin-top: 50px">
+                                시설양묘 과정에서 종자정선은 파종 직전에 실시합니다.<br />
+                                종자정선방법은 수종에 따라 달라질 수 있으나, 소나무, 낙엽송, 편백과 같은<br />
+                                침엽수 종자는 발아촉진을 겸하여 1~2일 정도 물에 담그는 방법으로 합니다.<br /><br />물에 가라앉은 종자를 사용하여 파종하고 물 위에 뜨는 종자는
+                                제거합니다.<br />
+                                이와 같은 종자 발아촉진처리를 실행하여 종자파종 후 발아가<br />
+                                빠른 시일(1~2주)내에 균일하게 이루어지도록 합니다.
+                            </p>
+                            <button type="button" class="tipBox__close">창닫기</button>
+                        </div>
+                    </div>
+                </aside>
+
+                <aside class="success miss-1-4">
+                    <div class="success__inner">
+                        <h2 class="success__tit"><img src="/images/pinetree/txt_complete.png" alt="미션성공" /></h2>
+                        <p class="success__point" style="font-size: 30px">종자정선을 통해 파종을 성공적으로 마쳤습니다.</p>
+                        <div class="success__box" style="width: 1280px; margin: 60px auto">
+                            <img src="/images/pinetree/suc_04.png" alt="" style="width: 100%" />
+                        </div>
+                        <a href="/html/ctvtsmlt/lobby.html" class="btnMain" style="left: 42%"></a>
+                        <a href="/html/ctvtsmlt/pinetree/mission_01_05.html" class="btnNext" style="left: 58%">
+                            <img src="/images/sprite/nextBtn.png" alt="" />
+                        </a>
+                    </div>
+                </aside>
+
+                <!-- 틀림답 -->
+                <aside class="incorrect miss-1-1">
+                    <div class="incorrect__inner">
+                        <button type="button" class="incorrect__handBox">
+                            <span class="incorrect__handImg"></span>
+                            <p class="incorrect__txt">
+                                알맞게 발아 축진<br />
+                                처리된 종자를<br />
+                                다시 골라보세요
+                            </p>
+                        </button>
+                    </div>
+                </aside>
+            </section>
+            <!--컨텐츠 끝 -->
+        </article>
+    </body>
+    <script src="/js/vendor/jquery.ui.datapicker.min.js"></script>
+    <script src="/js/vendor/waypoints.min.js"></script>
+    <script src="/js/vendor/datepicker-ko.js"></script>
+    <script src="/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="/js/vendor/jquery.easing.1.3.js"></script>
+    <script src="/js/vendor/slick.min.js"></script>
+    <script src="/js/vendor/jquery.counterup.min.js"></script>
+    <script src="/js/ui.js"></script>
+
+    <script src="/js/vendor/jquery.confetti.js"></script>
+    <script src="/js/vendor/jquery-ui.js"></script>
+    <script src="/js/miss.min.js"></script>
+    <script src="/js/sound.min.js"></script>
+    <script>
+        const missPage = document.querySelector(".incorrect");
+        const missAudio = new Audio("/sound/strawberry/01_Wrong.mp3");
+        const stage__countNum = document.querySelector(".stage__countNum");
+        let count = 0;
+
+        let check1 = false;
+        let check2 = false;
+        let check3 = false;
+        let check4 = false;
+        let check5 = false;
+        let check6 = false;
+
+        let totalNum = 0;
+        let correctNum = document.querySelector(".miss-1-4__zoom > span:first-child");
+
+        function pinCheck(e, num) {
+            if (e.parentElement.classList.contains("section")) {
+            }
+
+            if (num === 0) {
+                check1 = true;
+                if (check1) {
+                    totalNum < 6 && totalNum++;
+                    correctNum.textContent = totalNum;
+                    e.classList.add("correctAnswer");
+                }
+            }
+            if (num === 1) {
+                check2 = true;
+                if (check2) {
+                    totalNum < 6 && totalNum++;
+                    correctNum.textContent = totalNum;
+                    e.classList.add("correctAnswer");
+                }
+            }
+            if (num === 2) {
+                check3 = true;
+                if (check3) {
+                    totalNum < 6 && totalNum++;
+                    correctNum.textContent = totalNum;
+                    e.classList.add("correctAnswer");
+                }
+            }
+            if (num === 3) {
+                check4 = true;
+                if (check4) {
+                    totalNum < 6 && totalNum++;
+                    correctNum.textContent = totalNum;
+                    e.classList.add("correctAnswer");
+                }
+            }
+            if (num === 4) {
+                check5 = true;
+                if (check5) {
+                    totalNum < 6 && totalNum++;
+                    correctNum.textContent = totalNum;
+                    e.classList.add("correctAnswer");
+                }
+            }
+            if (num === 5) {
+                check6 = true;
+                if (check6) {
+                    totalNum < 6 && totalNum++;
+                    correctNum.textContent = totalNum;
+                    e.classList.add("correctAnswer");
+                }
+            }
+            if (num === 6) {
+                count++;
+                stage__countNum.textContent = count;
+
+                missAudio.play();
+                missPage.style.opacity = "1";
+                missPage.style.transform = "scale(1)";
+                missPage.style.visibility = "visible";
+            }
+            if (num === 7) {
+                count++;
+                stage__countNum.textContent = count;
+                missAudio.play();
+                missPage.style.opacity = "1";
+                missPage.style.transform = "scale(1)";
+                missPage.style.visibility = "visible";
+            }
+            if (num === 8) {
+                count++;
+                stage__countNum.textContent = count;
+                missAudio.play();
+                missPage.style.opacity = "1";
+                missPage.style.transform = "scale(1)";
+                missPage.style.visibility = "visible";
+            }
+            if (num === 9) {
+                count++;
+                stage__countNum.textContent = count;
+                missAudio.play();
+                missPage.style.opacity = "1";
+                missPage.style.transform = "scale(1)";
+                missPage.style.visibility = "visible";
+            }
+
+            if (totalNum === 6) {
+                document.querySelector(".btnGroup").style.display = "block";
+            }
+        }
+
+        missPage.addEventListener("click", function () {
+            setTimeout(() => (missPage.querySelector(".answer").style.display = "none"), 300);
+            missPage.style.opacity = "0";
+            missPage.style.transform = "scale(0)";
+            missPage.style.visibility = "hidden";
+        });
+
+        function completeCheck() {
+            new Audio("/sound/sound_yea.mp3").play();
+            clear();
+        }
+
+        $(document).ready(function () {
+            loadingComplete();
+            var challengeCount = 0; //도전횟수
+        });
+    </script>
+</html>
