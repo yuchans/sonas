@@ -81,6 +81,8 @@
                                 background: rgba(255, 255, 255, 0.6);
                             "
                         ></div>
+                        <div style="width: 170px; height: 2px; background-color: red; position: absolute; left: 190px; top: 190px; transform: rotate(140deg)"></div>
+                        <div style="width: 170px; height: 2px; background-color: red; position: absolute; left: 190px; top: 328px; transform: rotate(33deg)"></div>
                         <img src="/images/pinetree/bgg_08.svg" alt="" style="width: 100%; height: 100%; object-fit: cover" />
                         <img src="/images/pinetree/lit.svg" alt="" style="position: absolute; right: 20px; top: 36%; width: 170px" />
                         <div id="redLine" style="position: absolute; right: 68px; bottom: -14px; width: 113px; height: 8px; background: red"></div>
@@ -145,29 +147,33 @@
 
         const redLine = document.getElementById("redLine");
         const missNum = document.querySelector(".miss-1-1__addTxt span");
+        const plusBtn = document.querySelector(".iconBtnPlus");
+        const minusBtn = document.querySelector(".iconBtnPlusMinus");
+        const btnGroup = document.querySelector(".btnGroup");
 
-        document.querySelector(".iconBtnPlus").addEventListener("click", function () {
-            if (parseInt(redLine.style.bottom) <= 223) {
+        plusBtn.addEventListener("click", function () {
+            if (parseInt(redLine.style.bottom) <= 223 && parseFloat(missNum.textContent) < 2.0) {
                 redLine.style.bottom = parseInt(redLine.style.bottom) + 20 + "px";
                 missNum.textContent = (parseFloat(missNum.textContent) + 0.2).toFixed(1);
-                if (missNum.textContent === "1.0") {
-                    document.querySelector(".btnGroup").style.display = "block";
-                } else {
-                    document.querySelector(".btnGroup").style.display = "none";
-                }
+                toggleBtnGroupVisibility(); // plusBtn 클릭 시 버튼 그룹 표시 여부 업데이트
             }
         });
 
-        document.querySelector(".iconBtnPlusMinus").addEventListener("click", function () {
-            if (parseInt(redLine.style.bottom) >= 63) {
+        minusBtn.addEventListener("click", function () {
+            if (parseInt(redLine.style.bottom) >= 0.0) {
                 redLine.style.bottom = parseInt(redLine.style.bottom) - 20 + "px";
                 missNum.textContent = (parseFloat(missNum.textContent) - 0.2).toFixed(1);
-                if (missNum.textContent === "1.0") {
-                    document.querySelector(".btnGroup").style.display = "block";
-                } else {
-                    document.querySelector(".btnGroup").style.display = "none";
-                }
+                toggleBtnGroupVisibility(); // minusBtn 클릭 시 버튼 그룹 표시 여부 업데이트
             }
         });
+
+        function toggleBtnGroupVisibility() {
+            const currentValue = parseFloat(missNum.textContent);
+            if (currentValue === 1.0) {
+                btnGroup.style.display = "block";
+            } else {
+                btnGroup.style.display = "none";
+            }
+        }
     </script>
 </html>

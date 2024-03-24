@@ -264,7 +264,7 @@
         const cutAudio = new Audio("/sound/strawberry/02_Cut.mp3");
 
         document.querySelectorAll("#checkList>li").forEach((item, i) => {
-            item.querySelector("label div").addEventListener("click", function () {
+            item.querySelector("label").addEventListener("click", function () {
                 if (i === 0) {
                     cutAudio.play();
                     this.parentElement.parentElement.querySelector("label:hover").style.border = "none";
