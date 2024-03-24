@@ -244,15 +244,13 @@
         let correctNum = document.querySelector(".miss-1-4__zoom > span:first-child");
 
         function pinCheck(e, num) {
-            if (e.parentElement.classList.contains("section")) {
-            }
-
             if (num === 0) {
                 check1 = true;
                 if (check1) {
                     totalNum < 6 && totalNum++;
                     correctNum.textContent = totalNum;
                     e.classList.add("correctAnswer");
+                    e.style.pointerEvents = "none";
                 }
             }
             if (num === 1) {
@@ -261,6 +259,7 @@
                     totalNum < 6 && totalNum++;
                     correctNum.textContent = totalNum;
                     e.classList.add("correctAnswer");
+                    e.style.pointerEvents = "none";
                 }
             }
             if (num === 2) {
@@ -269,6 +268,7 @@
                     totalNum < 6 && totalNum++;
                     correctNum.textContent = totalNum;
                     e.classList.add("correctAnswer");
+                    e.style.pointerEvents = "none";
                 }
             }
             if (num === 3) {
@@ -277,6 +277,7 @@
                     totalNum < 6 && totalNum++;
                     correctNum.textContent = totalNum;
                     e.classList.add("correctAnswer");
+                    e.style.pointerEvents = "none";
                 }
             }
             if (num === 4) {
@@ -285,6 +286,7 @@
                     totalNum < 6 && totalNum++;
                     correctNum.textContent = totalNum;
                     e.classList.add("correctAnswer");
+                    e.style.pointerEvents = "none";
                 }
             }
             if (num === 5) {
@@ -293,6 +295,7 @@
                     totalNum < 6 && totalNum++;
                     correctNum.textContent = totalNum;
                     e.classList.add("correctAnswer");
+                    e.style.pointerEvents = "none";
                 }
             }
             if (num === 6) {
