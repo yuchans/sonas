@@ -2629,10 +2629,18 @@
             "소나무 농장을 운영하게 된 것을 축하합니다.<br>시설양묘를 통한 재배를 시작하기 전에 재배달력을 확인하여<br>소나무 재배의 과정과 수행해야 할 작업들에 대해서 살펴보세요.<br><strong>그럼 소나무 재배를 시작해볼까요?</strong>";
 
         typeWriter(textToType, 0, function () {});
-        window.onload = () => {
-            document.querySelector(".intro").classList.add("-active");
-            typeWriter();
-        };
+        const urlParams = new URL(location.href).searchParams;
+
+        const id = urlParams.get("id");
+
+        console.log(id);
+
+        if (id != 1) {
+            window.onload = () => {
+                document.querySelector(".intro").classList.add("-active");
+                typeWriter();
+            };
+        }
 
         document.querySelector(".btnNextWeek").addEventListener("click", () => {
             document.querySelector(".missionPopup").classList.add("-active");

@@ -88,7 +88,7 @@
             <div class="stage__bg"></div>
             <div class="stage__top">
                 <h1 class="stage__tit">소나무 수형잡기-가지치기</h1>
-                <a href="/html/ctvtsmlt/lobby.html" class="stage__exit">나가기</a>
+                <a href="/html/ctvtsmlt/lobby.html?id=1" class="stage__exit">나가기</a>
             </div>
             <input type="checkbox" id="chkFx" checked="checked" />
             <div class="tip">
@@ -264,7 +264,7 @@
         const cutAudio = new Audio("/sound/strawberry/02_Cut.mp3");
 
         document.querySelectorAll("#checkList>li").forEach((item, i) => {
-            item.querySelector("label").addEventListener("click", function () {
+            item.querySelector("label>div").addEventListener("click", function () {
                 if (i === 0) {
                     cutAudio.play();
                     this.parentElement.parentElement.querySelector("label:hover").style.border = "none";

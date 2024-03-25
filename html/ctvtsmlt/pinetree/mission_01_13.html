@@ -68,7 +68,7 @@
             <div class="stage__bg"></div>
             <div class="stage__top">
                 <h1 class="stage__tit">소나무 병해 방제</h1>
-                <a href="/html/ctvtsmlt/lobby.html" class="stage__exit">나가기</a>
+                <a href="/html/ctvtsmlt/lobby.html?id=1" class="stage__exit">나가기</a>
             </div>
             <input type="checkbox" id="chkFx" checked="checked" />
             <div class="tip">
@@ -95,7 +95,7 @@
                 </p>
 
                 <div class="Wrap_13">
-                    <section style="position: relative">
+                    <section style="position: absolute; left: 330px">
                         <button id="13_btn_1" type="button" onclick="imgChange(this)">
                             <img src="/images/pinetree/13_btn_1.png" alt="" />
                             <div class="btn_img" id="btn_img_1">
@@ -109,10 +109,10 @@
                             </div>
                         </button>
                     </section>
-                    <div style="width: 300px; height: 300px; border: 4px solid #000; border-radius: 30px; overflow: hidden; flex: none">
+                    <div style="width: 300px; height: 300px; border: 4px solid #000; border-radius: 30px; overflow: hidden; flex: none; margin-left: 20px">
                         <img id="13Img" src="/images/pinetree/13_img_0.jpg" alt="" />
                     </div>
-                    <section class="dt">
+                    <section class="dt" style="position: absolute; right: 310px">
                         <button id="13_btn_3" type="button" onclick="imgChange(this)">
                             <img src="/images/pinetree/13_btn_3.png" alt="" />
                             <div class="btn_img" id="btn_img_3">
@@ -251,9 +251,9 @@
 
             if (check1 && check2 && check3 && check4 && check5) {
                 document.querySelector(".Wrap_13 > section:nth-child(1)").style.position = "absolute";
-                document.querySelector(".Wrap_13 > section:nth-child(1)").style.left = "400px";
+                document.querySelector(".Wrap_13 > section:nth-child(1)").style.left = "420px";
                 document.querySelector(".Wrap_13 > .dt").style.position = "absolute";
-                document.querySelector(".Wrap_13 > .dt").style.right = "400px";
+                document.querySelector(".Wrap_13 > .dt").style.right = "390px";
                 document.querySelector(".Wrap_13 > .dt").style.top = "210px";
             }
         }
