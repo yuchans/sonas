@@ -297,7 +297,7 @@
             const stage__countNum = document.querySelector(".stage__countNum");
             const incorrect__txt = document.querySelector(".incorrect__txt");
 
-            if (parseInt(miss_1_2_inp01_value) != 1885) {
+            if (parseInt(miss_1_2_inp01_value) != 1886) {
                 missAudio.play();
                 stage__countNum.textContent = parseInt(stage__countNum.textContent, 10) + 1;
                 incorrect__txt.innerHTML = `
@@ -307,12 +307,12 @@
                 missPage.style.opacity = "1";
                 missPage.style.transform = "scale(1)";
                 missPage.style.visibility = "visible";
-            } else if (parseInt(miss_1_2_inp02_value) != 1885) {
+            } else if (parseInt(miss_1_2_inp02_value) != 1886) {
                 missAudio.play();
                 stage__countNum.textContent = parseInt(stage__countNum.textContent, 10) + 1;
                 incorrect__txt.innerHTML = `
                     <span>온실 최종 면적이<br/>정확하지 않습니다.</span><br />
-                    다시 시도해보세요.
+                    다시 시도해보세요. 
                 `;
                 missPage.style.opacity = "1";
                 missPage.style.transform = "scale(1)";
