@@ -37,13 +37,13 @@
             }
 
             #checkList li:nth-child(1) label {
-                left: 173px;
+                left: 180px;
                 top: 30px;
                 height: 206px;
             }
 
             #checkList li:nth-child(2) label {
-                left: 279px;
+                left: 274px;
                 top: 67px;
                 height: 200px;
                 width: 76px;
@@ -57,10 +57,47 @@
             }
 
             #checkList li:nth-child(4) label {
-                right: 147px;
+                right: 159px;
                 width: 82px;
                 top: 70px;
                 height: 162px;
+            }
+
+            #checkList li label > div:after {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 84px;
+                height: 73px;
+                right: -55px;
+                top: -73px;
+                cursor: none;
+                pointer-events: none;
+                transition: opacity 1s 2s;
+                opacity: 1;
+                z-index: 199;
+            }
+
+            #checkList li label > div:before {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 42px;
+                height: 42px;
+                border: 3px solid transparent;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                border-radius: 50%;
+                z-index: 199;
+            }
+
+            #checkList li label > div.correctAnswer::before {
+                border-color: #94be16;
+            }
+            #checkList li label > div.correctAnswer::after {
+                background: url(/images/pinetree/week01/miss_1_4/img_good.png) no-repeat 0 0;
+                opacity: 0;
             }
 
             .miss-1-1__box > p {
@@ -80,6 +117,22 @@
                 color: #1e293b;
                 opacity: 0;
                 transition: 0.5s ease-out;
+            }
+
+            #checkList li label article section,
+            #checkList li label > div {
+                width: 48px;
+                height: 48px;
+                line-height: 46px;
+                background: #fff;
+                border-radius: 50%;
+                border: 2px solid #000;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                text-align: center;
+                font-size: 22px;
+                font-weight: 900;
             }
         </style>
     </head>
@@ -119,57 +172,47 @@
                         <li>
                             <input type="checkbox" id="ch1" onchange="check(this)" />
                             <label for="ch1">
-                                <div style="width: 100%; height: 18px; position: absolute; left: 0; bottom: 14px"></div>
+                                <article>
+                                    <section style="bottom: 154px; left: 35px">1</section>
+                                    <section style="bottom: 74px">2</section>
+                                </article>
+
+                                <div id="j1" onclick="treeClick(this)" style="bottom: 14px">3</div>
                             </label>
                         </li>
-                        <li>
+                        <li id="t2" style="display: none">
                             <input type="checkbox" id="ch2" onchange="check(this)" />
                             <label for="ch2">
-                                <div style="width: 70%; height: 23px; position: absolute; left: 13px; bottom: 27px"></div>
+                                <article>
+                                    <section style="bottom: 154px">1</section>
+                                    <section style="bottom: 92px">2</section>
+                                </article>
+                                <div id="j2" onclick="treeClick(this)" style="bottom: 27px">3</div>
                             </label>
                         </li>
-                        <li>
+                        <li id="t3" style="display: none">
                             <input type="checkbox" id="ch3" onchange="check(this)" />
                             <label for="ch3">
-                                <div style="width: 100%; height: 18px; position: absolute; left: 0; bottom: 38px"></div>
+                                <article>
+                                    <section style="bottom: 184px; left: 51px">1</section>
+                                    <section style="bottom: 103px; left: 47px">2</section>
+                                </article>
+                                <div id="j3" onclick="treeClick(this)" style="bottom: 38px">3</div>
                             </label>
                         </li>
-                        <li>
+                        <li id="t4" style="display: none">
                             <input type="checkbox" id="ch4" onchange="check(this)" />
                             <label for="ch4">
-                                <div style="width: 67%; height: 14px; position: absolute; left: 0; bottom: 2px"></div>
+                                <article>
+                                    <section style="bottom: 94px; left: 54px">1</section>
+                                    <section style="bottom: 48px; left: 50px">2</section>
+                                </article>
+                                <div id="j4" onclick="treeClick(this)" style="bottom: 2px">3</div>
                             </label>
                         </li>
                     </ul>
-                    <img src="/images/pinetree/week01/11_tree.svg" alt="" style="width: 100%; height: 100%; object-fit: cover" />
-
-                    <img
-                        id="tree1"
-                        src="/images/pinetree/week01/miss_1_1/tree1.png"
-                        alt=""
-                        style="position: absolute; left: 169px; top: 0px; z-index: 10; width: 107px; background: #fff; padding-top: 70px; display: none"
-                    />
-
-                    <img
-                        id="tree2"
-                        src="/images/pinetree/week01/miss_1_1/tree2.png"
-                        alt=""
-                        style="position: absolute; left: 260px; top: 13px; z-index: 10; width: 106px; background: #fff; padding-top: 55px; display: none"
-                    />
-
-                    <img
-                        id="tree3"
-                        src="/images/pinetree/week01/miss_1_1/tree3.png"
-                        alt=""
-                        style="position: absolute; left: 388px; top: 0px; z-index: 10; width: 76px; background: #fff; padding-top: 77px; display: none"
-                    />
-
-                    <img
-                        id="tree4"
-                        src="/images/pinetree/week01/miss_1_1/tree4.png"
-                        alt=""
-                        style="position: absolute; left: 463px; top: 0px; z-index: 10; width: 74px; background: #fff; padding-top: 84px; display: none"
-                    />
+                    <img id="tree1" src="/images/pinetree/week01/11_tree.svg" alt="" style="width: 100%; height: 100%; object-fit: cover" />
+                    <img id="tree2" src="/images/pinetree/week01/tree2.svg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: none" />
                 </div>
                 <p class="miss_11_p">지난해 자란 선단부와 올해 자란 경계에서 적심전정을 실시합니다.</p>
                 <div class="btnGroup">
@@ -186,7 +229,8 @@
                             <h2 class="tipBox__tit">선생님의 재배 tip</h2>
                             <p class="miss-1-1__tipTxt" style="font-size: 22px; line-height: 36px">
                                 소나무 관리에서 중요하고 어려운 부분이 전정(剪定 가지치기)입니다.<br />
-                                대부분 전정을 외관적인 모습(나무의 수형, 형태 등)만을 위해 한다고 생각하기 쉬우나 <br />전정의 목적은 수형조절 이외에도 생리·생태적인 특성을 살려<br />
+                                대부분 전정을 외관적인 모습(나무의 수형, 형태 등)만을 위해 합니다고 생각하기 쉬우나 <br />전정의 목적은 수형조절 이외에도 생리·생태적인 특성을
+                                살려<br />
                                 생리 및 생육조절, 개화결실, 수세회복 등을 위해 진행합니다.
                             </p>
                             <p class="miss-1-1__tipTxt" style="font-size: 22px; line-height: 36px">
@@ -248,6 +292,7 @@
     <script src="/js/sound.min.js"></script>
     <script>
         let count = 0;
+        let count2 = 0;
         let challengeCount = 0;
 
         $(document).ready(function () {
@@ -267,35 +312,45 @@
             item.querySelector("label>div").addEventListener("click", function () {
                 if (i === 0) {
                     cutAudio.play();
-                    this.parentElement.parentElement.querySelector("label:hover").style.border = "none";
-                    document.getElementById("tree1").style.display = "block";
+                    this.classList.add("correctAnswer");
+                    this.parentElement.parentElement.querySelector("label:hover").style.border = "5px solid rgba(0, 0, 0, 0)";
+                    // document.getElementById("tree1").style.display = "block";
                     !check1 && count++;
                     Num.innerHTML = count;
                     check1 = true;
                 }
                 if (i === 1) {
                     cutAudio.play();
-                    this.parentElement.parentElement.querySelector("label:hover").style.border = "none";
-                    document.getElementById("tree2").style.display = "block";
+                    this.classList.add("correctAnswer");
+                    this.parentElement.parentElement.querySelector("label:hover").style.border = "5px solid rgba(0, 0, 0, 0)";
+                    // document.getElementById("tree2").style.display = "block";
                     !check2 && count++;
                     Num.innerHTML = count;
                     check2 = true;
                 }
                 if (i === 2) {
                     cutAudio.play();
-                    this.parentElement.parentElement.querySelector("label:hover").style.border = "none";
-                    document.getElementById("tree3").style.display = "block";
+                    this.classList.add("correctAnswer");
+                    this.parentElement.parentElement.querySelector("label:hover").style.border = "5px solid rgba(0, 0, 0, 0)";
+                    // document.getElementById("tree3").style.display = "block";
                     !check3 && count++;
                     Num.innerHTML = count;
                     check3 = true;
                 }
                 if (i === 3) {
                     cutAudio.play();
-                    this.parentElement.parentElement.querySelector("label:hover").style.border = "none";
-                    document.getElementById("tree4").style.display = "block";
+                    this.classList.add("correctAnswer");
+                    this.parentElement.parentElement.querySelector("label:hover").style.border = "5px solid rgba(0, 0, 0, 0)";
+                    // document.getElementById("tree4").style.display = "block";
                     !check4 && count++;
                     Num.innerHTML = count;
                     check4 = true;
+                }
+
+                if (check1 && check2 && check3 && check4) {
+                    document.getElementById("tree1").style.display = "none";
+                    document.getElementById("tree2").style.display = "block";
+                    document.querySelectorAll("#checkList li label").forEach((item) => (item.style.display = "none"));
                 }
             });
         });
@@ -303,6 +358,27 @@
         function check(input) {}
 
         const incorrect = document.querySelector(".incorrect");
+        const stage__countNum = document.querySelector(".stage__countNum");
+
+        document.querySelectorAll(".miss-1-1__box article section").forEach((item) => {
+            item.addEventListener("click", function () {
+                count2++;
+                stage__countNum.innerHTML = count2;
+                new Audio("/sound/strawberry/01_Wrong.mp3").play();
+            });
+        });
+
+        function treeClick(e) {
+            if (e.id === "j1") {
+                document.getElementById("t2").style.display = "block";
+            }
+            if (e.id === "j2") {
+                document.getElementById("t3").style.display = "block";
+            }
+            if (e.id === "j3") {
+                document.getElementById("t4").style.display = "block";
+            }
+        }
 
         function missClose() {
             incorrect.style.opacity = 0;

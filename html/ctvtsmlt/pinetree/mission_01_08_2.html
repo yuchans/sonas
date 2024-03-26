@@ -83,13 +83,6 @@
                         <img src="/images/pinetree/week01/miss_1_1/img_txt_water.png" ` alt="" class="miss-1-1__txtWater" />
                         <div class="miss-1-1__waterLine" style="display: none"></div>
                         <img src="/images/pinetree/week01/miss_1_1/img_water_guide.png" alt="" class="miss-1-1__guide" />
-                        <!-- <div class="pinetree-1-1__bubble" style="display: none">
-                            <img src="/images/pinetree/week01/miss_1_1/img_bubble.png" alt="" class="bubble01" />
-                            <img src="/images/pinetree/week01/miss_1_1/img_bubble2.png" alt="" class="bubble02" />
-                            <img src="/images/pinetree/week01/miss_1_1/img_bubble3.png" alt="" class="bubble03" />
-                            <img src="/images/pinetree/week01/miss_1_1/img_bubble3.png" alt="" class="bubble04" />
-                            <img src="/images/pinetree/week01/miss_1_1/img_bubble3.png" alt="" class="bubble05" />
-                        </div> -->
                     </div>
                     <div class="miss-1-1__disinfectant">
                         <div class="miss-1-1__shadow"></div>
@@ -100,9 +93,10 @@
                 <div class="iconBtnPlus">1리터 추가하기 버튼</div>
                 <button type="button" class="miss-1-1__activeBtn"></button>
                 <img src="/images/pinetree/week01/miss_1_1/img_miss-1-1_hand.png" alt="" class="miss-1-1__hand" />
-                <div class="btnGroup" style="display: none">
-                    <a href="#this" onclick="copleteCheck()" class="btn" style="margin-left: 0">
-                        <img src="/images/pinetree/cop_8.png" alt="" />
+                <div class="btnGroup" style="display: none; justify-content: center; gap: 14px; align-items: center">
+                    <a href="./mission_01_08_2.html" class="btn -reset">초기화</a>
+                    <a href="#this" id="completeBtn" onclick="copleteCheck()" class="btn" style="margin-left: 0">
+                        <img src="/images/pinetree/cop_8.png" alt="" style="width: 205px" />
                     </a>
                 </div>
                 <!--미션1-1 도움말 -->
@@ -120,18 +114,18 @@
                                 >
                                 1) 유묘 형성기(초기 생육기) 시비 관리하기<br />
                                 현재 우리나라에서 임업시설양묘에서 보편적으로 사용되고 있는 <br />수용액 비료인 멀 티피드 19(N:P:K=19:19:19)를 상대적으로 저농도인<br />
-                                2,000배액(500mg/ℓ)으로 조절하여 주 2회 정도 충분히 실시한다.<br />
+                                2,000배액(500mg/ℓ)으로 조절하여 주 2회 정도 충분히 실시합니다.<br />
                                 발아초기 단계에는 종자가 자체 양분을 가지고 있으므로<br />
                                 상배축(上胚軸, epicotyl) 또는 하배축(下胚軸, hypocotyl)이 나오기 전에는<br />
                                 과다한 관수와 시비로 인하여 종자가 썩지 않도록 하고,<br />
-                                이끼가 먼저 발생하지 않도록 주의한다.<br /><br />
+                                이끼가 먼저 발생하지 않도록 주의합니다.<br /><br />
                                 <span style="display: block; padding-bottom: 12px; margin-bottom: 16px; border-bottom: 1px solid #000; font-family: jalnan"
                                     >2) 빠른 생육기 시비 관리하기</span
                                 >수용액 비료인 멀티피드 19를 1,000배액(1,000mg/ℓ)으로 조절하여<br />
-                                주 2회 정도 충분히 실시한다. 묘목의 전 생육과정에서 간장, 근원경 및 뿌리가 <br />상대적으로 빠 른 생장을 보이는 단계이다. 이 단계에서 묘목은 빠른
+                                주 2회 정도 충분히 실시합니다. 묘목의 전 생육과정에서 간장, 근원경 및 뿌리가 <br />상대적으로 빠 른 생장을 보이는 단계이다. 이 단계에서 묘목은 빠른
                                 생장을 하여<br />
                                 간장이 목표 규격에 이르는 시기이며 대부분의 건중량 생장이<br />
-                                이루어지기 때문에 충분한 시비를 통해 최대한 좋은 생육을 유지하도록 한다.
+                                이루어지기 때문에 충분한 시비를 통해 최대한 좋은 생육을 유지하도록 합니다.
                             </p>
                             <button type="button" class="tipBox__close">창닫기</button>
                         </div>
@@ -187,18 +181,19 @@
     <script src="/js/sound.min.js"></script>
 
     <script>
+        let timeNum = 1; // timeNum 전역 변수로 이동
+        let timeSecondNum = 0; // timeSecondNum 전역 변수로 이동
         document.addEventListener("DOMContentLoaded", function () {
             let challengeCount = 0; //도전횟수
             let maxClickCount = 20; // 최대 클릭 횟수
             const btnGroup = document.querySelector(".btnGroup");
             let currentClickCount = 0; // 현재 클릭 횟수
+
             loadingComplete();
 
             //미션1-1
             (function () {
                 let chkHover = true;
-                let timeNum = 1;
-                let timeSecondNum = 0;
                 let waterLevel = 0;
                 let $setNum = document.querySelectorAll(".numBox span"); //넘버타겟
                 let count = 0; //정답 버튼 클릭수
@@ -241,8 +236,8 @@
                         missCup.insertAdjacentHTML(
                             "beforeend",
                             `
-            <div class="miss-1-1__waterLine"></div>
-            `
+        <div class="miss-1-1__waterLine"></div>
+        `
                         );
 
                         // 클릭할 때마다 숫자를 2씩 증가하도록 수정
@@ -260,9 +255,9 @@
                             $setNum[0].classList = `icon${timeSecondNum}`; // 첫 번째 자리 숫자 업데이트
                         }
 
-                        // 숫자가 20을 넘어가면 "완료" 버튼 숨기기
-                        if (timeSecondNum * 10 + timeNum > 20) {
-                            btnGroup.style.display = "none";
+                        // 클릭 횟수가 10회면 완료 버튼 활성화
+                        if (count === 10) {
+                            btnGroup.style.display = "flex";
                         }
 
                         waterLevel++;
@@ -279,12 +274,23 @@
 
                     // 클릭 횟수가 10회면 완료 버튼 활성화
                     if (count === 10) {
-                        btnGroup.style.display = "block";
+                        btnGroup.style.display = "flex";
                     }
                 });
             })();
         });
 
+        function resetNumBox() {
+            const numBox = document.querySelector(".numBox");
+            numBox.innerHTML = '<span class="icon0">0</span><span class="icon0">0</span>';
+
+            // 숫자를 초기화
+            timeNum = 1;
+            timeSecondNum = 0;
+
+            // 리셋 후에는 완료 버튼을 숨기기
+            document.querySelector("#completeBtn").style.display = "none";
+        }
         function copleteCheck() {
             new Audio("/sound/sound_yea.mp3").play();
             clear();

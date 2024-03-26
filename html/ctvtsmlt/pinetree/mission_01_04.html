@@ -228,6 +228,10 @@
     <script src="/js/miss.min.js"></script>
     <script src="/js/sound.min.js"></script>
     <script>
+        $(document).ready(function () {
+            loadingComplete();
+            //시작될때 스크립트 이행
+        });
         const missPage = document.querySelector(".incorrect");
         const missAudio = new Audio("/sound/strawberry/01_Wrong.mp3");
         const stage__countNum = document.querySelector(".stage__countNum");

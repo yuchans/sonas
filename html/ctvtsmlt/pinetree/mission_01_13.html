@@ -33,7 +33,7 @@
             }
 
             .Wrap_13 {
-                margin-top: 70px;
+                margin-top: 130px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -47,9 +47,8 @@
             }
 
             .btn_img {
-                width: 128px;
-                height: 128px;
-                border: 4px solid rgb(0, 0, 0);
+                width: 148px;
+                height: 148px;
                 border-radius: 30px;
                 overflow: hidden;
                 z-index: 10;
@@ -60,6 +59,12 @@
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
+            }
+            .Wrap_13 button {
+                width: 150px;
+            }
+            .Wrap_13 button img {
+                width: 100%;
             }
         </style>
     </head>
@@ -95,40 +100,40 @@
                 </p>
 
                 <div class="Wrap_13">
-                    <section style="position: absolute; left: 330px">
+                    <section style="position: absolute; left: 420px">
                         <button id="13_btn_1" type="button" onclick="imgChange(this)">
                             <img src="/images/pinetree/13_btn_1.png" alt="" />
                             <div class="btn_img" id="btn_img_1">
-                                <img src="/images/pinetree/13_img_1.jpg" alt="" />
+                                <img src="/images/pinetree/n1.png" alt="" />
                             </div>
                         </button>
                         <button id="13_btn_2" type="button" onclick="imgChange(this)">
                             <img src="/images/pinetree/13_btn_2.png" alt="" />
                             <div class="btn_img" id="btn_img_2">
-                                <img src="/images/pinetree/13_img_2.jpg" alt="" />
+                                <img src="/images/pinetree/n2.png" alt="" />
+                            </div>
+                        </button>
+                        <button id="13_btn_3" type="button" onclick="imgChange(this)">
+                            <img src="/images/pinetree/13_btn_3.png" alt="" />
+                            <div class="btn_img" id="btn_img_3">
+                                <img src="/images/pinetree/n3.png" alt="" />
                             </div>
                         </button>
                     </section>
                     <div style="width: 300px; height: 300px; border: 4px solid #000; border-radius: 30px; overflow: hidden; flex: none; margin-left: 20px">
-                        <img id="13Img" src="/images/pinetree/13_img_0.jpg" alt="" />
+                        <img id="13Img" src="/images/pinetree/lobby/bug_07.png" alt="" style="width: 100%; height: 100%; object-fit: cover" />
                     </div>
-                    <section class="dt" style="position: absolute; right: 310px">
-                        <button id="13_btn_3" type="button" onclick="imgChange(this)">
-                            <img src="/images/pinetree/13_btn_3.png" alt="" />
-                            <div class="btn_img" id="btn_img_3">
-                                <img src="/images/pinetree/13_img_3.jpg" alt="" />
-                            </div>
-                        </button>
+                    <section class="dt" style="position: absolute; right: 390px">
                         <button id="13_btn_4" type="button" onclick="imgChange(this)">
                             <img src="/images/pinetree/13_btn_4.png" alt="" />
                             <div class="btn_img" id="btn_img_4">
-                                <img src="/images/pinetree/13_img_4.jpg" alt="" />
+                                <img src="/images/pinetree/n4.png" alt="" />
                             </div>
                         </button>
                         <button id="13_btn_5" type="button" onclick="imgChange(this)">
                             <img src="/images/pinetree/13_btn_5.png" alt="" />
                             <div class="btn_img" id="btn_img_5">
-                                <img src="/images/pinetree/13_img_5.jpg" alt="" />
+                                <img src="/images/pinetree/n5.png" alt="" />
                             </div>
                         </button>
                     </section>
@@ -254,7 +259,7 @@
                 document.querySelector(".Wrap_13 > section:nth-child(1)").style.left = "420px";
                 document.querySelector(".Wrap_13 > .dt").style.position = "absolute";
                 document.querySelector(".Wrap_13 > .dt").style.right = "390px";
-                document.querySelector(".Wrap_13 > .dt").style.top = "210px";
+                document.querySelector(".Wrap_13 > .dt").style.top = "230px";
             }
         }
 
