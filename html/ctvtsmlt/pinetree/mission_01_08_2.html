@@ -93,9 +93,9 @@
                 <div class="iconBtnPlus">1리터 추가하기 버튼</div>
                 <button type="button" class="miss-1-1__activeBtn"></button>
                 <img src="/images/pinetree/week01/miss_1_1/img_miss-1-1_hand.png" alt="" class="miss-1-1__hand" />
-                <div class="btnGroup" style="display: none; justify-content: center; gap: 14px; align-items: center">
-                    <a href="./mission_01_08_2.html" class="btn -reset">초기화</a>
-                    <a href="#this" id="completeBtn" onclick="copleteCheck()" class="btn" style="margin-left: 0">
+                <div class="btnGroup" style="justify-content: center; gap: 14px; align-items: center">
+                    <a href="./mission_01_08_2.html" class="btn -reset" style="display: none">초기화</a>
+                    <a href="#this" id="completeBtn" onclick="copleteCheck()" class="btn" style="margin-left: 0; display: none">
                         <img src="/images/pinetree/cop_8.png" alt="" style="width: 205px" />
                     </a>
                 </div>
@@ -113,8 +113,12 @@
                                     >1. 생육단계별 시비 관리</span
                                 >
                                 1) 유묘 형성기(초기 생육기) 시비 관리하기<br />
-                                현재 우리나라에서 임업시설양묘에서 보편적으로 사용되고 있는 <br />수용액 비료인 멀 티피드 19(N:P:K=19:19:19)를 상대적으로 저농도인<br />
-                                2,000배액(500mg/ℓ)으로 조절하여 주 2회 정도 충분히 실시합니다.<br />
+                                현재 우리나라에서 임업시설양묘에서 보편적으로 사용되고 있는 <br />
+                                <strong style="color: #ee4344">
+                                    수용액 비료인 멀 티피드 19(N:P:K=19:19:19)를 상대적으로 저농도인<br />
+                                    2,000배액(500mg/ℓ)으로 조절하여 주 2회 정도 충분히 실시합니다.
+                                </strong>
+                                <br />
                                 발아초기 단계에는 종자가 자체 양분을 가지고 있으므로<br />
                                 상배축(上胚軸, epicotyl) 또는 하배축(下胚軸, hypocotyl)이 나오기 전에는<br />
                                 과다한 관수와 시비로 인하여 종자가 썩지 않도록 하고,<br />
@@ -236,8 +240,8 @@
                         missCup.insertAdjacentHTML(
                             "beforeend",
                             `
-        <div class="miss-1-1__waterLine"></div>
-        `
+    <div class="miss-1-1__waterLine"></div>
+    `
                         );
 
                         // 클릭할 때마다 숫자를 2씩 증가하도록 수정
@@ -274,7 +278,11 @@
 
                     // 클릭 횟수가 10회면 완료 버튼 활성화
                     if (count === 10) {
-                        btnGroup.style.display = "flex";
+                        document.querySelector("#completeBtn").style.display = "block";
+                    }
+                    if (count > 10) {
+                        document.querySelector("#completeBtn").style.display = "none";
+                        document.querySelector(".btn.-reset").style.display = "block";
                     }
                 });
             })();

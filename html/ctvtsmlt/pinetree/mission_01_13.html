@@ -33,7 +33,7 @@
             }
 
             .Wrap_13 {
-                margin-top: 130px;
+                margin-top: 60px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -100,7 +100,7 @@
                 </p>
 
                 <div class="Wrap_13">
-                    <section style="position: absolute; left: 420px">
+                    <section style="position: absolute; left: 412px">
                         <button id="13_btn_1" type="button" onclick="imgChange(this)">
                             <img src="/images/pinetree/13_btn_1.png" alt="" />
                             <div class="btn_img" id="btn_img_1">
@@ -254,12 +254,16 @@
                 btn_img_5.style.display = "block"; // 수정된 부분
             }
 
-            if (check1 && check2 && check3 && check4 && check5) {
+            if (check1 && check2 && check3) {
                 document.querySelector(".Wrap_13 > section:nth-child(1)").style.position = "absolute";
-                document.querySelector(".Wrap_13 > section:nth-child(1)").style.left = "420px";
+                document.querySelector(".Wrap_13 > section:nth-child(1)").style.left = "412px";
+                document.querySelector(".Wrap_13 > section:nth-child(1)").style.top = "242px";
+            }
+
+            if (check4 && check5) {
                 document.querySelector(".Wrap_13 > .dt").style.position = "absolute";
                 document.querySelector(".Wrap_13 > .dt").style.right = "390px";
-                document.querySelector(".Wrap_13 > .dt").style.top = "230px";
+                document.querySelector(".Wrap_13 > .dt").style.top = "242px";
             }
         }
 

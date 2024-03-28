@@ -24,6 +24,7 @@
                 width: 100px;
                 height: 100px;
                 position: absolute;
+                z-index: 2;
                 right: 20px;
                 top: 20px;
                 cursor: pointer;
@@ -57,9 +58,9 @@
             }
 
             #checkList li:nth-child(4) label {
-                right: 159px;
+                right: 180px;
                 width: 82px;
-                top: 70px;
+                top: 80px;
                 height: 162px;
             }
 
@@ -82,8 +83,8 @@
                 content: "";
                 display: block;
                 position: absolute;
-                width: 42px;
-                height: 42px;
+                width: 40px;
+                height: 40px;
                 border: 3px solid transparent;
                 left: 50%;
                 top: 50%;
@@ -121,18 +122,20 @@
 
             #checkList li label article section,
             #checkList li label > div {
-                width: 48px;
-                height: 48px;
-                line-height: 46px;
-                background: #fff;
+                width: 38px;
+                height: 38px;
+                line-height: 38px;
+                background: rgba(0, 0, 0, 0.6);
+                color: #fff;
                 border-radius: 50%;
-                border: 2px solid #000;
                 position: absolute;
                 left: 50%;
                 transform: translateX(-50%);
                 text-align: center;
-                font-size: 22px;
+                font-size: 18px;
                 font-weight: 900;
+                filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
+                border: 2px solid #fff;
             }
         </style>
     </head>
@@ -166,7 +169,7 @@
                     생육기 전정 중 5~6월에 실시하는 적심전정(순치기)은 <br />소나무의 잎과 가지를 짧게 해 소나무의 수형을 아름답게 만다는데 그 목적이 있습니다.<br />
                     다음 그림에서 소나무의 적심전정의 올바른 위치를 선택해서 클릭하여 잘라 주세요
                 </p>
-                <div class="miss-1-1__box" style="width: 700px; height: 360px; position: relative; background: #fff; border: 4px solid #000; border-radius: 20px">
+                <div class="miss-1-1__box" style="width: 700px; height: 380px; position: relative; background: #fff; border: 4px solid #000; border-radius: 20px">
                     <p><span id="Num">0</span> / 4</p>
                     <ul id="checkList">
                         <li>
@@ -211,7 +214,13 @@
                             </label>
                         </li>
                     </ul>
-                    <img id="tree1" src="/images/pinetree/week01/11_tree.svg" alt="" style="width: 100%; height: 100%; object-fit: cover" />
+
+                    <img id="tt1" src="/images/pinetree/week01/y1.svg" alt="" style="position: absolute; left: 183px; top: 42px; width: 91px" />
+                    <img id="tt2" src="/images/pinetree/week01/y2.svg" alt="" style="position: absolute; left: 263px; top: 45px; width: 91px" />
+                    <img id="tt3" src="/images/pinetree/week01/y3.svg" alt="" style="position: absolute; left: 375px; top: -3px; width: 91px" />
+                    <img id="tt4" src="/images/pinetree/week01/y4.svg" alt="" style="position: absolute; left: 444px; top: 56px; width: 91px" />
+
+                    <img id="tree1" src="/images/pinetree/week01/tree23.svg" alt="" style="width: 78%; display: block; margin: 83px auto 0" />
                     <img id="tree2" src="/images/pinetree/week01/tree2.svg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: none" />
                 </div>
                 <p class="miss_11_p">지난해 자란 선단부와 올해 자란 경계에서 적심전정을 실시합니다.</p>
@@ -312,7 +321,10 @@
             item.querySelector("label>div").addEventListener("click", function () {
                 if (i === 0) {
                     cutAudio.play();
+                    document.querySelector(".miss_11_p").style.opacity = 1;
                     this.classList.add("correctAnswer");
+                    this.parentElement.style.display = "none";
+                    document.getElementById("tt1").style.display = "none";
                     this.parentElement.parentElement.querySelector("label:hover").style.border = "5px solid rgba(0, 0, 0, 0)";
                     // document.getElementById("tree1").style.display = "block";
                     !check1 && count++;
@@ -322,6 +334,8 @@
                 if (i === 1) {
                     cutAudio.play();
                     this.classList.add("correctAnswer");
+                    this.parentElement.style.display = "none";
+                    document.getElementById("tt2").style.display = "none";
                     this.parentElement.parentElement.querySelector("label:hover").style.border = "5px solid rgba(0, 0, 0, 0)";
                     // document.getElementById("tree2").style.display = "block";
                     !check2 && count++;
@@ -331,8 +345,9 @@
                 if (i === 2) {
                     cutAudio.play();
                     this.classList.add("correctAnswer");
+                    this.parentElement.style.display = "none";
+                    document.getElementById("tt3").style.display = "none";
                     this.parentElement.parentElement.querySelector("label:hover").style.border = "5px solid rgba(0, 0, 0, 0)";
-                    // document.getElementById("tree3").style.display = "block";
                     !check3 && count++;
                     Num.innerHTML = count;
                     check3 = true;
@@ -340,16 +355,15 @@
                 if (i === 3) {
                     cutAudio.play();
                     this.classList.add("correctAnswer");
+                    this.parentElement.style.display = "none";
+                    document.getElementById("tt4").style.display = "none";
                     this.parentElement.parentElement.querySelector("label:hover").style.border = "5px solid rgba(0, 0, 0, 0)";
-                    // document.getElementById("tree4").style.display = "block";
                     !check4 && count++;
                     Num.innerHTML = count;
                     check4 = true;
                 }
 
                 if (check1 && check2 && check3 && check4) {
-                    document.getElementById("tree1").style.display = "none";
-                    document.getElementById("tree2").style.display = "block";
                     document.querySelectorAll("#checkList li label").forEach((item) => (item.style.display = "none"));
                 }
             });
@@ -388,10 +402,6 @@
 
         function copleteCheck() {
             document.querySelector(".stage__countNum").innerHTML = ++challengeCount;
-
-            if (count === 1) {
-                document.querySelector(".miss_11_p").style.opacity = 1;
-            }
 
             if (count < 4) {
                 new Audio("/sound/strawberry/01_Wrong.mp3").play();
