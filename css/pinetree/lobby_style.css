@@ -16,7 +16,7 @@
     font-family: "ds";
     src: url("/font/ds-digital/DS-DIGIB.eot");
     src: url("/font/ds-digital/DS-DIGIB.eot?#iefix") format("embedded-opentype"), url("/font/ds-digital/DS-DIGIB.woff") format("woff"),
-        url("/font/ds-digital/DS-DIGIB.ttf") format("truetype");
+        url("/font/ds-digital/DS-DIGIB.TTF") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
